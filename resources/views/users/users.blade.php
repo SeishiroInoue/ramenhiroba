@@ -3,10 +3,13 @@
         @foreach ($users as $user)
             <li class="media">
                 {{-- ユーザのアイコンを表示 --}}
-                <img class="mr-2 rounded" src="$user->icon" alt="">
+                <img src="{{ $user->icon }}" width="50" height="50">
                 <div class="media-body">
                     <div>
                         {{ $user->name }}
+                    </div>
+                    <div>
+                        {{ $user->profile }}
                     </div>
                     <div>
                         {{-- ユーザ詳細ページへのリンク --}}
@@ -16,4 +19,6 @@
             </li>
         @endforeach
     </ul>
+    {{-- ページネーションのリンク --}}
+    {{ $users->links() }}
 @endif

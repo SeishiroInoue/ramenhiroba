@@ -14,7 +14,7 @@
                     {{-- ユーザ一覧ページへのリンク --}}
                     <li class="nav-item">{!! link_to_route('users.index', 'ユーザー', [], ['class' => 'nav-link']) !!}</li>
                     <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="{{ $user->icon }}" width="25" height="25">{{-- Auth::user()->name --}}</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="{{ Auth::user()->icon }}" width="25" height="25"></a>
                         <ul class="dropdown-menu dropdown-menu-right">
                             {{-- ユーザ詳細ページへのリンク --}}
                             <li class="dropdown-item">{!! link_to_route('users.show', 'プロフィール', ['user' => Auth::id()]) !!}</li>

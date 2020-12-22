@@ -147,6 +147,8 @@ return [
         'password' => 'パスワード ',
         'profile' => 'プロフィール',
         'icon' => 'アイコン',
+        'content'=> 'レビュー内容',
+        'photo' => '写真',
     ],
 
 ];

@@ -1,12 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="mx-auto card" style="width: 15rem;">
-        <img class="card-img-top" src="{{ $user->icon }}" alt="{{ $user->name }}">
-        <div class="card-body">
-            <h3 class="card-title text-center">{{ $user->name }}</h3>
-        </div>
-    </div>
+    @include('users.card')
     <div class="text-center">
         <p>{{ $user->profile }}</p>
     </div>
@@ -22,4 +17,10 @@
         {{--タイムラインタブ --}}
         <li class="nav-item"><a href="#" class="nav-link">お気に入り</a></li>
     </ul>
+        @if (Auth::id() == $user->id)
+            {{-- レビューフォーム --}}
+             @include('reviews.form')
+        @endif
+        {{-- 投稿一覧 --}}
+        @include('reviews.reviews')
 @endsection    

@@ -3,7 +3,7 @@
         @foreach ($reviews as $review)
             <li class="media mb-3">
                 {{-- ユーザのアイコンを表示 --}}
-                <img class="mr-2 rounded" src="{{ $user->icon }}" width="50" height="50" alt="{{ $user->name }}">
+                <img class="mr-2 rounded" src="{{ $review->user->icon }}" width="50" height="50" alt="{{ $review->user->name }}">
                 <div class="media-body">
                     <div>
                         {{-- レビューの所有者のユーザ詳細ページへのリンク --}}
@@ -26,7 +26,7 @@
                     </div>
                     <div>
                         {{-- 画像表示 --}}
-                        <img src="{{ $review->photo }}" width="200" height="200" alt="{{ $user->name }}のラーメン">
+                        <img src="{{ $review->photo }}" width="200" height="200" alt="{{ $review->user->name }}のラーメン">
                     </div>
                     <div class="d-flex flex-row">
                         <div>    

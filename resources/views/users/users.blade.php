@@ -1,6 +1,5 @@
 @if (count($users) > 0)
     <ul class="list-unstyled">
-        <h2>ユーザー紹介</h2>
         @foreach ($users as $user)
             <li class="media">
                 {{-- ユーザのアイコンを表示 --}}

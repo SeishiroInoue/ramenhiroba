@@ -10,5 +10,5 @@
     {{-- タブ --}}
     @include('users.navtabs')
     {{-- お気に入りー一覧 --}}
-    @include('favorites.favorites')
+    @include('reviews.reviews')
 @endsection    

@@ -21,6 +21,11 @@
                  {!! link_to_route('signup.get', '新規登録', [], ['class' => 'btn btn-lg btn-outline-primary']) !!}
                 {{-- ログインページへのリンク --}}
                 {!! link_to_route('login', 'ログイン', [], ['class' => 'btn btn-lg btn-outline-primary']) !!}
+            </div>
+        </div>
+        <div>
+        {{-- レビュー一覧 --}}
+        @include('reviews.reviews')
         </div>
     @endif
 @endsection

@@ -9,10 +9,6 @@
     </div>
     {{-- タブ --}}
     @include('users.navtabs')
-        @if (Auth::id() == $user->id)
-            {{-- レビューフォーム --}}
-             @include('reviews.form')
-        @endif
-        {{-- 投稿一覧 --}}
-        @include('reviews.reviews')
+    {{-- ユーザー一覧 --}}
+    @include('users.users')
 @endsection    

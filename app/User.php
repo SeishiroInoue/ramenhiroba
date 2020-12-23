@@ -54,7 +54,7 @@ class User extends Authenticatable
     
     public function loadRelationshipCounts()
     {
-        $this->loadCount(['reviews', 'followings', 'followers']);
+        $this->loadCount(['reviews', 'followings', 'followers', 'favorites']);
     }
     
     public function follow($userId)
@@ -94,5 +94,37 @@ class User extends Authenticatable
         $userIds[] = $this->id;
         
         return Review::whereIn('user_id', $userIds);
+    }
+    
+    public function favorites()
+    {
+        return $this->belongsToMany(Review::class, 'favorites', 'user_id', 'review_id')->withTimestamps();
+    }
+    
+    public function favorite($reviewstId)
+    {
+        $exist = $this->is_favoriting($reviewstId);
+        if ($exist) {
+            return false;
+        } else {
+            $this->favorites()->attach($reviewstId);
+            return true;
+        }
+    }
+    
+    public function unfavorite($reviewstId)
+    {
+        $exist = $this->is_favoriting($reviewstId);
+        if ($exist) {
+            $this->favorites()->detach($reviewstId);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public function is_favoriting($reviewstId)
+    {
+        return $this->favorites()->where('review_id', $reviewstId)->exists();
     }
 }

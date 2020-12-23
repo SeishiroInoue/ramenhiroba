@@ -27,14 +27,29 @@
                     <div>
                         {{-- 画像表示 --}}
                         <img src="{{ $review->photo }}" width="200" height="200" alt="{{ $user->name }}のラーメン">
-                    </div>    
-                    <div>
-                        @if (Auth::id() == $review->user_id)
-                            {{-- レビュー削除ボタンのフォーム --}}
-                            {!! Form::open(['route' => ['reviews.destroy', $review->id], 'method' => 'delete']) !!}
-                                {!! Form::submit('削除', ['class' => 'btn btn-info btn-sm']) !!}
-                            {!! Form::close() !!}
-                        @endif
+                    </div>
+                    <div class="d-flex flex-row">
+                        <div>    
+                            @if (Auth::user()->is_favoriting($review->id))
+                                {{-- 非お気に入りボタンのフォーム --}}
+                                {!! Form::open(['route' => ['favorites.unfavorite', $review->id], 'method' => 'delete']) !!}
+                                    {!! Form::submit('お気に入り', ['class' => "btn btn-success btn-sm", 'style' => "margin-right:20px"]) !!}
+                                {!! Form::close() !!}
+                            @else
+                                {{-- お気に入りのボタンのフォーム --}}
+                                {!! Form::open(['route' => ['favorites.favorite', $review->id]]) !!}
+                                    {!! Form::submit('お気に入り', ['class' => "btn btn-outline-success btn-sm", 'style' => "margin-right:20px"]) !!}
+                                {!! Form::close() !!}
+                            @endif
+                        </div>
+                        <div>
+                            @if (Auth::id() == $review->user_id)
+                                {{-- レビュー削除ボタンのフォーム --}}
+                                {!! Form::open(['route' => ['reviews.destroy', $review->id], 'method' => 'delete']) !!}
+                                    {!! Form::submit('削除', ['class' => 'btn btn-outline-danger btn-sm']) !!}
+                                {!! Form::close() !!}
+                            @endif
+                        </div>
                     </div>
                 </div>
             </li>

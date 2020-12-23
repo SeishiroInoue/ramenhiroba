@@ -1,13 +1,14 @@
 @if (count($users) > 0)
     <ul class="list-unstyled">
+        <h2>ユーザー紹介</h2>
         @foreach ($users as $user)
             <li class="media">
                 {{-- ユーザのアイコンを表示 --}}
                 <img src="{{ $user->icon }}" width="50" height="50">
                 <div class="media-body">
-                    <div>
+                    <h3>
                         {{ $user->name }}
-                    </div>
+                    </h3>
                     <div>
                         {{ $user->profile }}
                     </div>

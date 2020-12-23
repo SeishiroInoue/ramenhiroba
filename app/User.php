@@ -87,4 +87,12 @@ class User extends Authenticatable
     {
         return $this->followings()->where('follow_id', $userId)->exists();
     }
+    
+    public function feed_reviews()
+    {
+        $userIds = $this->followings()->pluck('users.id')->toArray();
+        $userIds[] = $this->id;
+        
+        return Review::whereIn('user_id', $userIds);
+    }
 }

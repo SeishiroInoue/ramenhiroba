@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -36,5 +37,20 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+    
+    public function guestLogin()
+    {
+        $name = 'ゲストユーザー';
+        $email = 'guest@guest.jp';
+        $icon = 'https://ramenhiroba.s3.ap-northeast-1.amazonaws.com/icon/ezb4qKXUjFL3JLYCeELgGworyM32S7Zydbp5TDVf.jpg';
+        $profile = 'ゲストユーザーです';
+        $password = 'guestguest';
+        
+        if (Auth::attempt(['name' => $name, 'email' => $email, 'icon' => $icon, 'profile' => $profile, 'password' => $password])) {
+            return redirect('/');
+        }
+        
+        return redirect('/');
     }
 }

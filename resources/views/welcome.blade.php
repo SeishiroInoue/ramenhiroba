@@ -18,9 +18,15 @@
                 <h1>ラーメン広場へようこそ！</h1>
                 <p>さっそくレビューしてみよう</p>
                 {{-- ユーザ登録ページへのリンク --}}
-                 {!! link_to_route('signup.get', '新規登録', [], ['class' => 'btn btn-lg btn-outline-primary']) !!}
+                {!! link_to_route('signup.get', '新規登録', [], ['class' => 'btn btn-lg btn-outline-primary']) !!}
                 {{-- ログインページへのリンク --}}
                 {!! link_to_route('login', 'ログイン', [], ['class' => 'btn btn-lg btn-outline-primary']) !!}
+                <div>
+                <br>
+                <p>ゲストユーザーはこちら</p>    
+                {{-- ゲストログインボタン --}}
+                {!! link_to_route('login.guest', 'ゲストログイン', [], ['class' => 'btn btn-lg btn-outline-primary', 'type' => 'submit']) !!}
+                </div>
             </div>
         </div>
         <div>

@@ -5,9 +5,9 @@
                 {{-- ユーザのアイコンを表示 --}}
                 <img src="{{ $user->icon }}" width="50" height="50">
                 <div class="media-body">
-                    <h3>
+                    <h5>
                         {{ $user->name }}
-                    </h3>
+                    </h5>
                     <div>
                         {{ $user->profile }}
                     </div>

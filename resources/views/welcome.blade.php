@@ -3,8 +3,6 @@
 @section('content')
     @if (Auth::check())
         <div class="mx-auto">
-            {{-- ユーザー表示 --}}
-            @include('users.card')
             {{-- 投稿フォーム --}}
             @include('reviews.form')
             {{-- レビュー一覧 --}}

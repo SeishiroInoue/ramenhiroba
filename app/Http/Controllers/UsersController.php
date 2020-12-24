@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class UsersController extends Controller
 {
@@ -26,6 +27,42 @@ class UsersController extends Controller
             'user' => $user,
             'reviews' =>$reviews,
         ]);
+    }
+    
+    public function edit()
+    {
+        $user = Auth::user();
+        return view('profile.edit', [
+            'user' => $user, 
+        ]);
+    }
+    
+    
+    public function update(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:50',
+            'email' => 'required|string|email|max:255|unique:users,email,'.\Auth::id().',id',
+            'password' => 'required|string|min:8|confirmed',
+            'profile' => 'string|max:150',
+            'icon' => 'image|max:5120',
+        ]);
+        
+        $user = User::findOrFail(Auth::id());
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->profile = $request->profile;
+        if ($request->icon) {
+            $file = $request->icon;
+            $path = Storage::disk('s3')->putFile('/icon', $file, 'public');
+            $url = Storage::disk('s3')->url($path);
+            $user->icon = $url;
+        }
+        
+        $user->save();
+        
+        return redirect('/');
     }
     
     public function followings($id)

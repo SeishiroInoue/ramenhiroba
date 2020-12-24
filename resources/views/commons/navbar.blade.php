@@ -13,7 +13,7 @@
                 @if (Auth::check())
                     {{-- ユーザ一覧ページへのリンク --}}
                     <li class="nav-item">{!! link_to_route('users.index', 'ユーザー', [], ['class' => 'nav-link']) !!}</li>
-                    <li style="font-size:20px; margin:auto">{{ Auth::user()->name }}</li>
+                    <li style="font-size:15px; margin:auto">{{ Auth::user()->name }}</li>
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="{{ Auth::user()->icon }}" width="25" height="25"></a>
                         <ul class="dropdown-menu dropdown-menu-right">
                             {{-- ユーザ詳細ページへのリンク --}}

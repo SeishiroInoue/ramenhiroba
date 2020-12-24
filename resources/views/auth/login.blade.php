@@ -21,7 +21,12 @@
 
                 {!! Form::submit('ログイン', ['class' => 'btn btn-danger btn-block']) !!}
             {!! Form::close() !!}
-
+            
+            <br>
+            <p>ゲストユーザーはこちら</p>    
+            {{-- ゲストログインボタン --}}
+            {!! link_to_route('login.guest', 'ゲストログイン', [], ['class' => 'btn btn-danger btn-block', 'type' => 'submit']) !!}
+                
             {{-- ユーザ登録ページへのリンク --}}
             <p class="mt-2">登録済みでない方は、{!! link_to_route('signup.get', '新規登録') !!}</p>
         </div>

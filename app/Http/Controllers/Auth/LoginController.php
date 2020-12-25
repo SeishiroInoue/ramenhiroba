@@ -43,7 +43,7 @@ class LoginController extends Controller
     {
         $name = 'ゲストユーザー';
         $email = 'guest@guest.jp';
-        $icon = 'https://ramenhiroba.s3.ap-northeast-1.amazonaws.com/icon/ezb4qKXUjFL3JLYCeELgGworyM32S7Zydbp5TDVf.jpg';
+        $icon = 'https://ramenhiroba.s3.ap-northeast-1.amazonaws.com/icon/NKOs7vWgmVaS9uoqnpc5rGvy3tQ5XI0xv9CXX6FR.jpg';
         $profile = 'ゲストユーザーです';
         $password = 'guestguest';
         

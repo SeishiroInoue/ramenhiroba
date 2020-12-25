@@ -41,4 +41,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('profile/update', 'UsersController@update')->name('profile.update'); 
 
     Route::resource('reviews', 'ReviewsController', ['only' => ['store', 'destroy']]);
+    
 });

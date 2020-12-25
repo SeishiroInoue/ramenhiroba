@@ -14,6 +14,6 @@ return [
     */
 
     'failed' => '認証情報が記録と一致しません。',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'throttle' => 'ログイン失敗が続きました。:seconds秒間お待ちください。',
 
 ];

@@ -30,30 +30,31 @@
                         <img src="{{ $review->photo }}" width="200px" height="200px" style="object-fit:cover" alt="{{ $review->user->name }}のラーメン">
                         </a>
                     </div>
-                    <div class="d-flex flex-row">
-                        <div>
+                    <ul class="nav nav-justified">
+                        <li>
                             @if (Auth::check())    
                             @if (Auth::user()->is_favoriting($review->id))
                                 {{-- 非お気に入りボタンのフォーム --}}
                                 {!! Form::open(['route' => ['favorites.unfavorite', $review->id], 'method' => 'delete']) !!}
-                                    {!! Form::submit('お気に入り', ['class' => "btn rounded-pill btn-success btn-sm", 'style' => "margin-right:20px"]) !!}
+                                    {!! Form::submit('お気に入り', ['class' => "btn rounded-pill btn-success btn-sm"]) !!}
                                 {!! Form::close() !!}
                             @else
                                 {{-- お気に入りのボタンのフォーム --}}
                                 {!! Form::open(['route' => ['favorites.favorite', $review->id]]) !!}
-                                    {!! Form::submit('お気に入り', ['class' => "btn rounded-pill btn-outline-success btn-sm", 'style' => "margin-right:20px"]) !!}
+                                    {!! Form::submit('お気に入り', ['class' => "btn rounded-pill btn-outline-success btn-sm"]) !!}
                                 {!! Form::close() !!}
                             @endif
                             @endif
-                        </div>
-                        <div>
+                        </li>
+                        <li style="margin:0 7px">{{ $review->favorite_users_count }}</li>
+                        <li>
                             @if (Auth::id() == $review->user_id)
                                 {{-- レビュー削除ボタンのフォーム --}}
                                 {!! Form::open(['route' => ['reviews.destroy', $review->id], 'method' => 'delete']) !!}
                                     {!! Form::submit('削除', ['class' => 'btn rounded-pill btn-outline-danger btn-sm']) !!}
                                 {!! Form::close() !!}
                             @endif
-                        </div>
+                        </li>
                     </div>
                 </div>
             </li>

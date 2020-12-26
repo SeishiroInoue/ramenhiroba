@@ -24,14 +24,14 @@
                         {{-- レビュー内容 --}}
                         <p class="mb-0">{!! nl2br(e($review->content)) !!}</p>
                     </div>
-                    <div>
+                    <div style="margin:0 0 7px 0">
                         {{-- 画像表示 --}}
                         <a href="{{ $review->photo }}" data-lightbox="ラーメン">
                         <img src="{{ $review->photo }}" width="200px" height="200px" style="object-fit:cover" alt="{{ $review->user->name }}のラーメン">
                         </a>
                     </div>
-                    <ul class="nav nav-justified">
-                        <li>
+                    <div class="d-flex flex-row">
+                        <div>
                             @if (Auth::check())    
                             @if (Auth::user()->is_favoriting($review->id))
                                 {{-- 非お気に入りボタンのフォーム --}}
@@ -45,16 +45,16 @@
                                 {!! Form::close() !!}
                             @endif
                             @endif
-                        </li>
-                        <li style="margin:0 7px">{{ $review->favorite_users_count }}</li>
-                        <li>
+                        </div>
+                        <div style="margin:3px 3px 0 3px">{{ $review->favorite_users_count }}</div>
+                        <div>
                             @if (Auth::id() == $review->user_id)
                                 {{-- レビュー削除ボタンのフォーム --}}
                                 {!! Form::open(['route' => ['reviews.destroy', $review->id], 'method' => 'delete']) !!}
                                     {!! Form::submit('削除', ['class' => 'btn rounded-pill btn-outline-danger btn-sm']) !!}
                                 {!! Form::close() !!}
                             @endif
-                        </li>
+                        </div>
                     </div>
                 </div>
             </li>

@@ -65,6 +65,20 @@ class UsersController extends Controller
         return redirect('/');
     }
     
+    public function delete_confirm()
+    {
+        $user = Auth::user();
+        return view('users.delete_confirm');
+    }
+    
+    public function destroy()
+    {
+        $user = User::findOrFail(Auth::id());
+        $user->delete();
+        
+        return redirect('/');
+    }
+    
     public function followings($id)
     {
         $user = User::findOrFail($id);

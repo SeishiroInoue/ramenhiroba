@@ -8,8 +8,6 @@
             {{-- レビュー一覧 --}}
             @include('reviews.reviews')
         </div>
-            </div>
-        </div> 
     @else
         <div class="center jumbotron">
             <div class="text-center">
@@ -27,7 +25,7 @@
                 </div>
             </div>
         </div>
-        <div>
+        <div class="mx-auto">
         {{-- レビュー一覧 --}}
         @include('reviews.reviews')
         </div>

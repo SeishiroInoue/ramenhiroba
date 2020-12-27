@@ -18,10 +18,12 @@
                         <ul class="dropdown-menu dropdown-menu-right">
                             {{-- ユーザ詳細ページへのリンク --}}
                             <li class="dropdown-item">{!! link_to_route('users.show', 'マイページ', ['user' => Auth::id()]) !!}</li>
-                            {{-- ユーザー情報編集ページへのリンク --}}
-                            <li class="dropdown-item">{!! link_to_route('profile.edit', '登録情報変更') !!}</li>
                             {{-- お気に入りへのリンク --}}
                             <li class="dropdown-item">{!! link_to_route('users.favorites', 'お気に入り', ['id' => Auth::id()]) !!}</li>
+                            {{-- ユーザー情報編集ページへのリンク --}}
+                            <li class="dropdown-item">{!! link_to_route('profile.edit', '登録情報変更') !!}</li>
+                            {{-- 退会ページへのリンク --}}
+                            <li class="dropdown-item">{!! link_to_route('user.delete_confirm', '退会する') !!}</li>
                             <li class="dropdown-divider"></li>
                             {{-- ログアウトへのリンク --}}
                             <li class="dropdown-item">{!! link_to_route('logout.get', 'ログアウト') !!}</li>

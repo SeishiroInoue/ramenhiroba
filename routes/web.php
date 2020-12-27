@@ -35,11 +35,11 @@ Route::group(['middleware' => ['auth']], function () {
         Route::delete('unfavorite', 'FavoritesController@destroy')->name('favorites.unfavorite');
     });
     
-    Route::resource('users', 'UsersController', ['only' => ['index', 'show']]); 
+    Route::resource('users', 'UsersController', ['only' => ['index', 'show', 'destroy']]); 
     
     Route::get('profile/edit', 'UsersController@edit')->name('profile.edit');
     Route::put('profile/update', 'UsersController@update')->name('profile.update'); 
-
-    Route::resource('reviews', 'ReviewsController', ['only' => ['store', 'destroy']]);
+    Route::get('delete_confirm', 'UsersController@delete_confirm')->name('user.delete_confirm');
     
+    Route::resource('reviews', 'ReviewsController', ['only' => ['store', 'destroy']]);
 });

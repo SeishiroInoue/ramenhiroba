@@ -29,7 +29,7 @@
                         <div style="margin:0 0 7px 0">
                             {{-- 画像表示 --}}
                             <a href="{{ $review->photo }}" data-lightbox="ラーメン">
-                            <img src="{{ $review->photo }}" width="200px" height="200px" style="object-fit:cover" alt="{{ $review->user->name }}のラーメン">
+                            <img src="{{ $review->photo }}" width="320px" height="180px" style="object-fit:cover" alt="{{ $review->user->name }}のラーメン">
                             </a>
                         </div>
                         <div class="d-flex flex-row">

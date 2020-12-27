@@ -13,7 +13,7 @@
             </div>
             <div>
                 {!! Form::open(['route' => ['users.destroy', 'user' => Auth::id()], 'method' => 'delete']) !!}
-                    {!! Form::submit('退会', ['class' => 'btn btn-danger btn-block']) !!}
+                    {!! Form::submit('退会する', ['class' => 'btn btn-danger btn-block']) !!}
                 {!! Form::close() !!}
             </div>
             <br>

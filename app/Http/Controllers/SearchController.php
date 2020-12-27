@@ -19,6 +19,7 @@ class SearchController extends Controller
         $reviews = $query->orderBy('created_at', 'desc')->paginate(10);
         
         return view('search.index', [
+            'keyword' => $keyword,
             'reviews' => $reviews,    
         ]);
     }

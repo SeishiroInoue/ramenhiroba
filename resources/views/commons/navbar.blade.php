@@ -2,6 +2,7 @@
     <nav class="navbar navbar-expand-sm navbar-dark bg-warning">
         {{-- トップページへのリンク --}}
         <a class="navbar-brand" href="/">ラーメン広場</a>
+        {{-- 検索フォーム --}}
         <form class="form-inline my-2 my-lg-0 ml-2" action="{{url('/search')}}">
             <div class="form-group">
                 <input type="search" class="form-control mr-sm-2" name="search"  value="{{request('search')}}" placeholder="キーワードを入力" aria-label="検索...">
@@ -17,6 +18,8 @@
             <ul class="navbar-nav mr-auto"></ul>
             <ul class="navbar-nav">
                 @if (Auth::check())
+                    {{-- お気に入りランキングへのリンク --}}
+                    <li class="nav-item">{!! link_to_route('favorites.ranking', 'ランキング', [], ['class' => 'nav-link']) !!}</li>
                     {{-- ユーザ一覧ページへのリンク --}}
                     <li class="nav-item">{!! link_to_route('users.index', 'ユーザー', [], ['class' => 'nav-link']) !!}</li>
                     <li style="font-size:15px; margin:auto">{{ Auth::user()->name }}</li>

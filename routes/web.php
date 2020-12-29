@@ -43,7 +43,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::put('profile/update', 'UsersController@update')->name('profile.update'); 
     Route::get('delete_confirm', 'UsersController@delete_confirm')->name('user.delete_confirm');
     
-    Route::resource('reviews', 'ReviewsController', ['only' => ['store', 'destroy']]);
+    Route::resource('reviews', 'ReviewsController', ['only' => ['store', 'destroy', 'show']]);
     
     Route::get('ranking', 'FavoritesController@index')->name('favorites.ranking');
+    
+    Route::resource('comments', 'CommentsController', ['only' => ['store', 'destroy']]);
 });

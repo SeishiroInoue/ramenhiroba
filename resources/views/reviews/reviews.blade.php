@@ -36,22 +36,31 @@
                             <div>
                                 @if (Auth::check())    
                                 @if (Auth::user()->is_favoriting($review->id))
-                                    {{-- 非お気に入りボタンのフォーム --}}
+                                    {{-- 非お気に入りボタン --}}
                                     {!! Form::open(['route' => ['favorites.unfavorite', $review->id], 'method' => 'delete']) !!}
                                         {!! Form::submit('お気に入り', ['class' => "btn rounded-pill btn-success btn-sm"]) !!}
                                     {!! Form::close() !!}
                                 @else
-                                    {{-- お気に入りのボタンのフォーム --}}
+                                    {{-- お気に入りのボタン --}}
                                     {!! Form::open(['route' => ['favorites.favorite', $review->id]]) !!}
                                         {!! Form::submit('お気に入り', ['class' => "btn rounded-pill btn-outline-success btn-sm"]) !!}
                                     {!! Form::close() !!}
                                 @endif
                                 @endif
                             </div>
-                            <div style="margin:3px 3px 0 3px">{{ $review->favorite_users_count }}</div>
+                            <div style="margin:3px 0 0 5px">{{ $review->favorite_users_count }}</div>
+                            <div style="margin:0 5px 0 5px">
+                                @if (Auth::check())
+                                    {{-- コメントボタン --}}
+                                    {!! Form::open(['route' => ['reviews.show', $review->id], 'method' => 'get']) !!}
+                                        {!! Form::submit('コメントする', ['class' => 'btn rounded-pill btn-outline-primary btn-sm']) !!}
+                                    {!! Form::close() !!}
+                                @endif
+                            </div>
+                            <div style="margin:3px 5px 0 0">{{ $review->comment_users_count }}</div>
                             <div>
                                 @if (Auth::id() == $review->user_id)
-                                    {{-- レビュー削除ボタンのフォーム --}}
+                                    {{-- レビュー削除ボタン --}}
                                     {!! Form::open(['route' => ['reviews.destroy', $review->id], 'method' => 'delete']) !!}
                                         {!! Form::submit('削除', ['class' => 'btn rounded-pill btn-outline-danger btn-sm']) !!}
                                     {!! Form::close() !!}

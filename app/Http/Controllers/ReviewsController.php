@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Review;
+use App\Comment;
 
 class ReviewsController extends Controller
 {
@@ -13,7 +14,7 @@ class ReviewsController extends Controller
         $data = [];
         if (\Auth::check()) {
             $user = \Auth::user();
-            $reviews = $user->feed_reviews()->withCount('favorite_users')->orderBy('created_at', 'desc')->paginate(10);
+            $reviews = $user->feed_reviews()->withCount('favorite_users')->withCount('comment_users')->orderBy('created_at', 'desc')->paginate(10);
             
             $data = [
                 'user' => $user,
@@ -30,7 +31,7 @@ class ReviewsController extends Controller
     }
     
     public function store(Request $request)
-    {        
+    {   
         $request->validate([
             'content' => 'required|max:150',
             'photo' => 'required|image|max:5120'
@@ -53,12 +54,24 @@ class ReviewsController extends Controller
     
     public function destroy($id)
     {
-        $review = \App\Review::findOrFail($id);
+        $review = Review::findOrFail($id);
 
         if (\Auth::id() === $review->user_id) {
+            $review->comments()->delete();
             $review->delete();
         }
 
         return back();
+    }
+    
+    public function show($id)
+    {
+        $review = Review::findOrFail($id);
+        $comments = Comment::where('review_id', $id)->orderBy('created_at','desc')->paginate(10);
+        
+        return view('reviews.show', 
+        [ 'review' => $review,
+          'comments' => $comments,
+        ]);
     }
 }

@@ -45,6 +45,11 @@ class User extends Authenticatable
         return $this->hasMany(Review::class);
     }
     
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+    
     public function followings()
     {
         return $this->belongsToMany(User::class, 'user_follow', 'user_id', 'follow_id')->withTimestamps();

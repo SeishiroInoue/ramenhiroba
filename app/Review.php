@@ -13,8 +13,18 @@ class Review extends Model
         return $this->belongsTo(User::class);
     }
     
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+    
     public function favorite_users()
     {
         return $this->belongsToMany(User::class, 'favorites', 'review_id', 'user_id')->withTimestamps();
+    }
+    
+    public function comment_users()
+    {
+        return $this->belongsToMany(User::class, 'comments', 'review_id', 'user_id')->withTimestamps();
     }
 } 

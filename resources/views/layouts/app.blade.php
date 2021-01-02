@@ -26,4 +26,7 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
         <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
     </body>
+    <footer style="text-align:center">
+        <p><small>Copyright© 2020-2021 <a href="/">ラーメン広場<a> All Rights Reserved.</small></p>
+    </footer>
 </html>

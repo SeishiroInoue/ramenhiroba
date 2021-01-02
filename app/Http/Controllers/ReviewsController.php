@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Review;
 use App\Comment;
+use App\User;
 
 class ReviewsController extends Controller
 {

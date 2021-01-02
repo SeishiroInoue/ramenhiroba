@@ -47,6 +47,7 @@
                         @endif
                         @endif
                     </div>
+                    <div style="margin:3px 0 0 5px">{{ $review->favorite_users_count }}</div>
                     <div>
                         @if (Auth::id() == $review->user_id)
                             {{-- レビュー削除ボタン --}}

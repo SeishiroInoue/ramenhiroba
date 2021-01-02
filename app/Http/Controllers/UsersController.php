@@ -107,7 +107,7 @@ class UsersController extends Controller
     {
         $user = User::findOrFail($id);
         $user->loadRelationshipCounts();
-        $favorites = $user->favorites()->paginate(10);
+        $favorites = $user->favorites()->withCount('favorite_users')->withCount('comment_users')->paginate(10);
     
         return view('users.favorites', [
             'user' => $user,

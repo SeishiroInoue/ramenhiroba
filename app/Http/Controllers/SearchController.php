@@ -16,7 +16,7 @@ class SearchController extends Controller
             $query->where('content', 'LIKE', "%{$keyword}%");
         }
         
-        $reviews = $query->orderBy('created_at', 'desc')->paginate(10);
+        $reviews = $query->withCount('favorite_users')->withCount('comment_users')->orderBy('created_at', 'desc')->paginate(10);
         
         return view('search.index', [
             'keyword' => $keyword,

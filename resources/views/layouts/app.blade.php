@@ -10,23 +10,26 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" type="text/javascript"></script>
     </head>
     <body>
+        <div class="wrapper" style="display:flex;flex-direction:column;min-height:100vh;">
 
-        {{-- ナビゲーションバー --}}
-        @include('commons.navbar')
-
-        <div class="container">
-            {{-- エラーメッセージ --}}
-            @include('commons.error_messages')
-
-            @yield('content')
+            {{-- ナビゲーションバー --}}
+            @include('commons.navbar')
+    
+            <div class="container" style="flex:1">
+                {{-- エラーメッセージ --}}
+                @include('commons.error_messages')
+    
+                @yield('content')
+            </div>
+    
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+            <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
+            
+            <footer style="margin-top:auto;text-align:center">
+                <p><small>Copyright© 2020-2021 <a href="/">ラーメン広場<a> All Rights Reserved.</small></p>
+            </footer>
         </div>
-
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
-        <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
     </body>
-    <footer style="text-align:center">
-        <p><small>Copyright© 2020-2021 <a href="/">ラーメン広場<a> All Rights Reserved.</small></p>
-    </footer>
 </html>

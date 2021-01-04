@@ -1,6 +1,7 @@
 {!! Form::open(['route' => 'reviews.store', 'enctype' => 'multipart/form-data', 'action' => 'ReviewsController.php']) !!}
     <div class="form-group">
-        {!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows' => '2']) !!}
+        {!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows' => '2', 'placeholder' => 'レビュー']) !!}
+        {!! Form::text('tags', old('tags'), ['class' => 'form-control', 'placeholder' => '#家系#二郎系']) !!}
         {!! Form::file('photo', ['class' => 'form-control-file']) !!}
         <div>
             おすすめ度

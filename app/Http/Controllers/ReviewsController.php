@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 use App\Review;
 use App\Comment;
 use App\User;
+use App\Tag;
 
 class ReviewsController extends Controller
 {
@@ -33,22 +35,34 @@ class ReviewsController extends Controller
     
     public function store(Request $request)
     {   
-        $request->validate([
+        $review = $request->validate([
             'content' => 'required|max:150',
             'photo' => 'required|image|max:5120'
         ]);
         
-        $file = $request['photo'];
+        preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ一-龥]+)/u', $request->tags, $match);
+        $tags = [];
+        foreach ($match[1] as $tag) {
+            $record = Tag::firstOrCreate(['name' => $tag]);
+            array_push($tags, $record);
+        }
+        $tags_id = [];
+        foreach ($tags as $tag) {
+            array_push($tags_id, $tag->id);
+        }
+        
+        $file = $request->photo;
         $path = Storage::disk('s3')->putFile('/ramen', $file, 'public');
-        $url = Storage::disk('s3')->url($path);
+        $url = Storage::disk('s3')->url($path); 
         
-        $scores = $_POST["score"];
+        $review = new Review;
+        $review->user_id = Auth::id();
+        $review->content = $request->content;
+        $review->photo = $url;
+        $review->score = $request->score;
+        $review->save();
         
-        $request->user()->reviews()->create([
-            'content' => $request->content,
-            'photo' => $url,
-            'score' => $scores,
-        ]);
+        $review->tags()->attach($tags_id);
 
         return back();
     }

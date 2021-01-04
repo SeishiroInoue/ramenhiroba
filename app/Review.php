@@ -27,4 +27,9 @@ class Review extends Model
     {
         return $this->belongsToMany(User::class, 'comments', 'review_id', 'user_id')->withTimestamps();
     }
+    
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'review_tag', 'review_id', 'tag_id')->withTimestamps(); 
+    }
 } 

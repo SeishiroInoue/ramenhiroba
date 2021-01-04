@@ -26,6 +26,12 @@
                             {{-- レビュー内容 --}}
                             <p class="mb-0">{!! nl2br(e($review->content)) !!}</p>
                         </div>
+                        <div>
+                            {{-- タグ表示 --}}
+                            @foreach($review->tags as $review_tag)
+		                        <span class="badge badge-pill badge-warning">{{$review_tag->name}}</span>
+                            @endforeach
+                        </div>
                         <div style="margin:0 0 7px 0">
                             {{-- 画像表示 --}}
                             <a href="{{ $review->photo }}" data-lightbox="ラーメン">

@@ -12,18 +12,24 @@ class CommentsController extends Controller
     {   
         $request->validate([
             'content' => 'required|max:150',
-            'photo' => 'required|image|max:5120'
+            'photo' => 'image|max:5120'
         ]);
         
-        $file = $request['photo'];
-        $path = Storage::disk('s3')->putFile('/ramen', $file, 'public');
-        $url = Storage::disk('s3')->url($path);
-        
-        $request->user()->comments()->create([
-            'content' => $request->content,
-            'photo' => $url,
-            'review_id' => $_POST['review_id'],
-        ]);
+        if ($request->photo) {
+            $file = $request->photo;
+            $path = Storage::disk('s3')->putFile('/ramen', $file, 'public');
+            $url = Storage::disk('s3')->url($path);
+
+            $request->user()->comments()->create([
+                'content' => $request->content,
+                'photo' => $url,
+                'review_id' => $request->review_id,
+            ]); } else {
+            $request->user()->comments()->create([
+                'content' => $request->content,
+                'review_id' => $request->review_id,
+            ]);
+        }
 
         return back();
     }

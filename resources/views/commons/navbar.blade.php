@@ -1,11 +1,11 @@
 <header class="mb-4">
     <nav class="navbar navbar-expand-sm navbar-dark bg-warning">
         {{-- トップページへのリンク --}}
-        <a class="navbar-brand" href="/">ラーメン広場</a>
+        <a class="navbar-brand" href="/"><font face="ＭＳ 明朝"><b>ラーメン広場</b></font> <img src="https://ramenhiroba.s3-ap-northeast-1.amazonaws.com/ramen-icon.png" width="20" height="20" style="color:white"></a>
         {{-- 検索フォーム --}}
-        <form class="form-inline my-2 my-lg-0 ml-2" action="{{url('/search')}}">
+        <form class="form-inline my-2 my-lg-0 ml-2" action="{{ url('/search') }}">
             <div class="form-group">
-                <input type="search" class="form-control mr-sm-2" name="search"  value="{{request('search')}}" placeholder="キーワードを入力" aria-label="検索...">
+                <input type="search" class="form-control mr-sm-2" name="search"  value="{{ request('search') }}" placeholder="キーワードを入力" aria-label="検索...">
             </div>
             <input type="submit" value="検索" class="btn btn-danger">
         </form>
@@ -22,20 +22,19 @@
                     <li class="nav-item">{!! link_to_route('favorites.ranking', 'ランキング', [], ['class' => 'nav-link']) !!}</li>
                     {{-- ユーザ一覧ページへのリンク --}}
                     <li class="nav-item">{!! link_to_route('users.index', 'ユーザー', [], ['class' => 'nav-link']) !!}</li>
-                    <li style="font-size:15px; margin:auto">{{ Auth::user()->name }}</li>
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><img src="{{ Auth::user()->icon }}" width="25" height="25"></a>
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" style="color:black"><span style="font-size:15px; margin:auto">{{ Auth::user()->name }}</span><img src="{{ Auth::user()->icon }}" width="25" height="25"></a>
                         <ul class="dropdown-menu dropdown-menu-right">
                             {{-- ユーザ詳細ページへのリンク --}}
-                            <li class="dropdown-item">{!! link_to_route('users.show', 'マイページ', ['user' => Auth::id()]) !!}</li>
+                            <li class="dropdown-item">{!! link_to_route('users.show', 'マイページ', ['user' => Auth::id()], ['class' => 'text-muted']) !!}</li>
                             {{-- お気に入りへのリンク --}}
-                            <li class="dropdown-item">{!! link_to_route('users.favorites', 'お気に入り', ['id' => Auth::id()]) !!}</li>
+                            <li class="dropdown-item">{!! link_to_route('users.favorites', 'お気に入り', ['id' => Auth::id()], ['class' => 'text-muted']) !!}</li>
                             {{-- ユーザー情報編集ページへのリンク --}}
-                            <li class="dropdown-item">{!! link_to_route('profile.edit', '登録情報変更') !!}</li>
+                            <li class="dropdown-item">{!! link_to_route('profile.edit', '登録情報変更', [], ['class' => 'text-muted']) !!}</li>
                             {{-- 退会ページへのリンク --}}
-                            <li class="dropdown-item">{!! link_to_route('user.delete_confirm', '退会する') !!}</li>
+                            <li class="dropdown-item">{!! link_to_route('user.delete_confirm', '退会する', [], ['class' => 'text-muted']) !!}</li>
                             <li class="dropdown-divider"></li>
                             {{-- ログアウトへのリンク --}}
-                            <li class="dropdown-item">{!! link_to_route('logout.get', 'ログアウト') !!}</li>
+                            <li class="dropdown-item">{!! link_to_route('logout.get', 'ログアウト', [], ['class' => 'text-muted']) !!}</li>
                         </ul>
                     </li>
                 @else

@@ -9,28 +9,29 @@
                     <div class="media-body">
                         <div>
                             {{-- レビューの所有者のユーザ詳細ページへのリンク --}}
-                            {!! link_to_route('users.show', $comment->user->name, ['user' => $comment->user->id]) !!}
+                            <span><b>{!! link_to_route('users.show', $comment->user->name, ['user' => $comment->user->id], ['style' => 'color:black']) !!}</b></span>
                             <span class="text-muted">{{ $comment->created_at }}</span>
                         </div>
                         <div>
                             {{-- コメント内容 --}}
                             <p class="mb-0">{!! nl2br(e($comment->content)) !!}</p>
                         </div>
-                        <div style="margin:0 0 7px 0">
-                            {{-- 画像表示 --}}
-                            <a href="{{ $comment->photo }}" data-lightbox="ラーメン">
-                            <img src="{{ $comment->photo }}" width="320px" height="180px" style="object-fit:cover" alt="{{ $comment->user->name }}のラーメン">
-                            </a>
-                        </div>
-                        <div>
-                            @if (Auth::id() == $comment->user_id)
+                        @if ($comment->photo) 
+                            <div style="margin:0 0 7px 0">
+                                {{-- 画像表示 --}}
+                                <a href="{{ $comment->photo }}" data-lightbox="ラーメン">
+                                    <img src="{{ $comment->photo }}" width="320px" height="180px" style="object-fit:cover" alt="{{ $comment->user->name }}のラーメン">
+                                </a>
+                            </div>
+                        @endif
+                        @if (Auth::id() == $comment->user_id)
+                            <div>
                                 {{-- コメント削除ボタン --}}
                                 {!! Form::open(['route' => ['comments.destroy', $comment->id], 'method' => 'delete']) !!}
                                     {!! Form::submit('削除', ['class' => 'btn rounded-pill btn-outline-danger btn-sm']) !!}
                                 {!! Form::close() !!}
-                            @endif
-                        </div>
-                        </div>
+                            </div>
+                        @endif
                     </div>
                 </li>
             @endif    

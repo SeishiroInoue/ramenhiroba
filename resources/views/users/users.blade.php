@@ -5,12 +5,8 @@
                 {{-- ユーザのアイコンを表示 --}}
                 <img src="{{ $user->icon }}" width="50" height="50">
                 <div class="media-body">
-                    <h5>
-                        {{ $user->name }}
-                    </h5>
-                    <div>
-                        {{ $user->profile }}
-                    </div>
+                    <div><b>{{ $user->name }}</b></div>
+                    <span class="text-muted">{{ $user->profile }}</span>
                     <div>
                         {{-- ユーザ詳細ページへのリンク --}}
                         <p>{!! link_to_route('users.show', '詳細へ', ['user' => $user->id]) !!}</p>

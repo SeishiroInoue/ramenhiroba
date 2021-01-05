@@ -19,7 +19,7 @@
             <ul class="navbar-nav">
                 @if (Auth::check())
                     {{-- お気に入りランキングへのリンク --}}
-                    <li class="nav-item">{!! link_to_route('favorites.ranking', 'ランキング', [], ['class' => 'nav-link']) !!}</li>
+                    <li class="nav-item">{!! link_to_route('ranking.favorites', 'ランキング', [], ['class' => 'nav-link']) !!}</li>
                     {{-- ユーザ一覧ページへのリンク --}}
                     <li class="nav-item">{!! link_to_route('users.index', 'ユーザー', [], ['class' => 'nav-link']) !!}</li>
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" style="color:black"><span style="font-size:15px; margin:auto">{{ Auth::user()->name }}</span><img src="{{ Auth::user()->icon }}" width="25" height="25"></a>

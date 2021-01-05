@@ -18,13 +18,4 @@ class FavoritesController extends Controller
         \Auth::user()->unfavorite($id);
         return back();
     }
-    
-    public function index()
-    {
-        $reviews = Review::withCount('favorite_users')->withCount('comment_users')->orderBy('favorite_users_count', "desc")->paginate(10);
-        
-        return view('favorites.ranking', [
-            'reviews' => $reviews
-        ]);
-    }
 }

@@ -23,6 +23,8 @@ Route::get('login/guest', 'Auth\LoginController@guestLogin')->name('login.guest'
 
 Route::get('search', 'SearchController@index')->name('search.index');
 
+Route::get('tag', 'SearchController@getReviewsByTag')->name('tag.search');
+
 Route::group(['middleware' => ['auth']], function () {
     Route::group(['prefix' => 'users/{id}'], function () {
         Route::post('follow', 'UserFollowController@store')->name('user.follow');
@@ -45,9 +47,9 @@ Route::group(['middleware' => ['auth']], function () {
     
     Route::resource('reviews', 'ReviewsController', ['only' => ['store', 'destroy', 'show']]);
     
-    Route::get('ranking', 'FavoritesController@index')->name('favorites.ranking');
+    Route::get('ranking/favorites', 'RankingsController@favorites')->name('ranking.favorites');
+    Route::get('ranking/comments', 'RankingsController@comments')->name('ranking.comments');
+    Route::get('ranking/reviews', 'RankingsController@reviews')->name('ranking.reviews');
     
     Route::resource('comments', 'CommentsController', ['only' => ['store', 'destroy']]);
-    
-    Route::get('tag', 'SearchController@getReviewsByTag')->name('tag.search');
 });

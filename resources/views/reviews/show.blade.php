@@ -28,7 +28,7 @@
                 <div>
                     {{-- タグ表示 --}}
                     @foreach ($review->tags as $review_tag)
-		                <span class="badge badge-warning">{{$review_tag->name}}</span>
+                        <span><a href="{{ route('tag.search', ['tag_name' => $review_tag->name]) }}" class="badge badge-warning">{{ $review_tag->name }}</a></span>
                     @endforeach
                 </div>
                 <div style="margin:5px 0">
@@ -66,7 +66,7 @@
     </ul>
     {!! Form::open(['route' => 'comments.store', 'enctype' => 'multipart/form-data', 'action' => 'CommentsController.php']) !!}
     <div class="form-group">
-        {{ Form::hidden('review_id',$review->id) }}
+        {!! Form::hidden('review_id',$review->id) !!}
         {!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows' => '2']) !!}
         {!! Form::file('photo', ['class' => 'form-control-file']) !!}
         {!! Form::submit('コメント', ['class' => 'btn btn-primary btn-block']) !!} 

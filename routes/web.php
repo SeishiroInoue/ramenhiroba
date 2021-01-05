@@ -48,4 +48,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('ranking', 'FavoritesController@index')->name('favorites.ranking');
     
     Route::resource('comments', 'CommentsController', ['only' => ['store', 'destroy']]);
+    
+    Route::get('tag', 'SearchController@getReviewsByTag')->name('tag.search');
 });

@@ -29,7 +29,7 @@
                         <div>
                             {{-- タグ表示 --}}
                             @foreach ($review->tags as $review_tag)
-                                <span class="badge badge-warning">{{ $review_tag->name }}</span>
+                                <span><a href="{{ route('tag.search', ['tag_name' => $review_tag->name]) }}" class="badge badge-warning">{{ $review_tag->name }}</a></span>
                             @endforeach
                         </div>
                         <div style="margin:5px 0">

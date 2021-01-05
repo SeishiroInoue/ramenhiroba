@@ -28,7 +28,7 @@
             <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>
             
             <footer style="margin-top:auto;text-align:center">
-                <p><small>Copyright© 2020-2021 <a href="/">ラーメン広場<a> All Rights Reserved.</small></p>
+                <p><small>Copyright© 2020-2021 <a href="/" style="color:black"><b>ラーメン広場</b><a> All Rights Reserved.</small></p>
             </footer>
         </div>
     </body>

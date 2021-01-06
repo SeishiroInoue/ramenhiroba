@@ -29,7 +29,7 @@ class RankingsController extends Controller
     public function reviews()
     {
         $users = User::withCount('reviews')->orderBy('reviews_count', "desc")->paginate(10);
-        
+
         return view('rankings.reviews', [
             'users' => $users,
         ]);

@@ -50,4 +50,21 @@ class SearchController extends Controller
             'reviews' => $reviews,    
         ]);
     }
+    
+    public function getReviewsByScore(Request $request)
+    {
+        $keyword = $request->score;
+        $query = Review::query();
+        
+        if (!empty($keyword)) {
+            $query->where('score', $keyword);
+        }
+        
+        $reviews = $query->withCount('favorite_users')->withCount('comment_users')->orderBy('created_at', 'desc')->paginate(10);
+
+        return view('search.index', [
+            'keyword' => $keyword,
+            'reviews' => $reviews,    
+        ]);
+    }
 }

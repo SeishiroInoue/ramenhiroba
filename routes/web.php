@@ -24,6 +24,7 @@ Route::get('login/guest', 'Auth\LoginController@guestLogin')->name('login.guest'
 Route::get('search', 'SearchController@index')->name('search.index');
 
 Route::get('tag', 'SearchController@getReviewsByTag')->name('tag.search');
+Route::get('score', 'SearchController@getReviewsByScore')->name('score.search');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::group(['prefix' => 'users/{id}'], function () {

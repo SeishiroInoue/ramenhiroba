@@ -15,11 +15,11 @@
                            {{-- 星を表示　--}}
                         <div>
                             @switch ($review->score)
-                                @case(5) ⭐️⭐️⭐️⭐️⭐️ @break
-                                @case(4) ⭐️⭐⭐️⭐️ @break  
-                                @case(3) ⭐️⭐️⭐️ @break
-                                @case(2) ⭐️️⭐️ @break
-                                @case(1) ⭐️️ @break
+                                @case(5) <span><a href="{{ route('score.search', ['score' => 5]) }}">⭐️⭐️⭐️⭐️⭐</a></span>@break
+                                @case(4) <span><a href="{{ route('score.search', ['score' => 4]) }}">⭐️⭐️⭐️⭐️</a></span>@break  
+                                @case(3) <span><a href="{{ route('score.search', ['score' => 3]) }}">⭐️⭐️⭐️</a></span>@break
+                                @case(2) <span><a href="{{ route('score.search', ['score' => 2]) }}">⭐️⭐️</a></span>@break
+                                @case(1) <span><a href="{{ route('score.search', ['score' => 1]) }}">⭐️</a></span>@break
                             @endswitch    
                         </div>  
                         <div>

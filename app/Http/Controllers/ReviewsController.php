@@ -59,6 +59,7 @@ class ReviewsController extends Controller
         $review->user_id = Auth::id();
         $review->content = $request->content;
         $review->photo = $url;
+        $review->prefecture = $request->prefecture;
         $review->score = $request->score;
         $review->save();
         

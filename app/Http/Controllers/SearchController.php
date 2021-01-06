@@ -39,7 +39,7 @@ class SearchController extends Controller
         
         if (!empty($keyword)) {
             $query->orWhereHas('tags', function ($query) use ($keyword) {
-                $query->where('name', 'LIKE', "%{$keyword}%");
+                $query->where('name', $keyword);
             });
         }
         
@@ -58,6 +58,23 @@ class SearchController extends Controller
         
         if (!empty($keyword)) {
             $query->where('score', $keyword);
+        }
+        
+        $reviews = $query->withCount('favorite_users')->withCount('comment_users')->orderBy('created_at', 'desc')->paginate(10);
+
+        return view('search.index', [
+            'keyword' => $keyword,
+            'reviews' => $reviews,    
+        ]);
+    }
+    
+    public function getReviewsByPrefecture(Request $request)
+    {
+        $keyword = $request->prefecture;
+        $query = Review::query();
+        
+        if (!empty($keyword)) {
+            $query->where('prefecture', $keyword);
         }
         
         $reviews = $query->withCount('favorite_users')->withCount('comment_users')->orderBy('created_at', 'desc')->paginate(10);

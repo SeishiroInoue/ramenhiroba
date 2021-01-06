@@ -12,16 +12,19 @@
                             <span><b>{!! link_to_route('users.show', $review->user->name, ['user' => $review->user->id], ['style' => 'color:black']) !!}</b></span>
                             <span class="text-muted">{{ $review->created_at }}</span>
                         </div>
-                           {{-- 星を表示　--}}
-                        <div>
-                            @switch ($review->score)
-                                @case(5) <span><a href="{{ route('score.search', ['score' => 5]) }}">⭐️⭐️⭐️⭐️⭐</a></span>@break
-                                @case(4) <span><a href="{{ route('score.search', ['score' => 4]) }}">⭐️⭐️⭐️⭐️</a></span>@break  
-                                @case(3) <span><a href="{{ route('score.search', ['score' => 3]) }}">⭐️⭐️⭐️</a></span>@break
-                                @case(2) <span><a href="{{ route('score.search', ['score' => 2]) }}">⭐️⭐️</a></span>@break
-                                @case(1) <span><a href="{{ route('score.search', ['score' => 1]) }}">⭐️</a></span>@break
-                            @endswitch    
-                        </div>  
+                        <div class="d-flex flex-row">
+                            @include('reviews.prefecture')
+                            {{-- 星を表示　--}}
+                            <div style="margin:0 5px"> 
+                                @switch ($review->score)
+                                    @case(5) <span><a href="{{ route('score.search', ['score' => '5']) }}">⭐️⭐️⭐️⭐️⭐</a></span>@break
+                                    @case(4) <span><a href="{{ route('score.search', ['score' => '4']) }}">⭐️⭐️⭐️⭐️</a></span>@break  
+                                    @case(3) <span><a href="{{ route('score.search', ['score' => '3']) }}">⭐️⭐️⭐️</a></span>@break
+                                    @case(2) <span><a href="{{ route('score.search', ['score' => '2']) }}">⭐️⭐️</a></span>@break
+                                    @case(1) <span><a href="{{ route('score.search', ['score' => '1']) }}">⭐️</a></span>@break
+                                @endswitch    
+                            </div>
+                        </div>
                         <div>
                             {{-- レビュー内容 --}}
                             <p class="mb-0">{!! nl2br(e($review->content)) !!}</p>

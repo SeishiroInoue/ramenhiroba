@@ -13,6 +13,7 @@
                             <span class="text-muted">{{ $review->created_at }}</span>
                         </div>
                         <div class="d-flex flex-row">
+                            {{-- 都道府県を表示 --}}
                             @include('reviews.prefecture')
                             {{-- 星を表示　--}}
                             <div style="margin:0 5px"> 
@@ -32,7 +33,7 @@
                         <div>
                             {{-- タグ表示 --}}
                             @foreach ($review->tags as $review_tag)
-                                <span><a href="{{ route('tag.search', ['tag_name' => $review_tag->name]) }}" class="badge badge-warning">{{ $review_tag->name }}</a></span>
+                                <span><a href="{{ route('tag.search', ['tag' => $review_tag->name]) }}" class="badge badge-warning">{{ $review_tag->name }}</a></span>
                             @endforeach
                         </div>
                         <div style="margin:5px 0">

@@ -61,6 +61,8 @@ class ReviewsController extends Controller
         $review->photo = $url;
         $review->prefecture = $request->prefecture;
         $review->score = $request->score;
+        $review->latitude = $request->latitude;
+        $review->longitude = $request->longitude;
         $review->save();
         
         $review->tags()->attach($tags_id);

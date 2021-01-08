@@ -23,7 +23,7 @@
             {!! Form::close() !!}
             
             <br>
-            <p>ゲストユーザーはこちら</p>    
+            <spna>ゲストユーザーはこちら</span>    
             {{-- ゲストログインボタン --}}
             {!! link_to_route('login.guest', 'ゲストログイン', [], ['class' => 'btn btn-danger btn-block', 'type' => 'submit']) !!}
                 

@@ -21,8 +21,7 @@ Route::post('login', 'Auth\LoginController@login')->name('login.post');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout.get');
 Route::get('login/guest', 'Auth\LoginController@guestLogin')->name('login.guest');
 
-Route::get('search', 'SearchController@index')->name('search.index');
-
+Route::get('search', 'SearchController@getReviewsByWord')->name('word.search');
 Route::get('tag', 'SearchController@getReviewsByTag')->name('tag.search');
 Route::get('score', 'SearchController@getReviewsByScore')->name('score.search');
 Route::get('prefecture', 'SearchController@getReviewsByPrefecture')->name('prefecture.search');

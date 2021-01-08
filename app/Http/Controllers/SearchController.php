@@ -9,13 +9,14 @@ use App\User;
 
 class SearchController extends Controller
 {
-    public function index(Request $request)
+    public function getReviewsByWord(Request $request)
     {
-        $keyword = $request->search;
+        $keyword = $request->word;
         $query = Review::query();
         
         if (!empty($keyword)) {
             $query->where('content', 'LIKE', "%{$keyword}%")
+            ->orWhere('prefecture', 'LIKE', "%{$keyword}%")
             ->orWhereHas('tags', function ($query) use ($keyword) {
                 $query->where('name', 'LIKE', "%{$keyword}%");
             })
@@ -24,9 +25,9 @@ class SearchController extends Controller
             });
         }
         
-        $reviews = $query->withCount('favorite_users')->withCount('comment_users')->orderBy('created_at', 'desc')->paginate(10);
+        $reviews = $query->withCount('favorite_users')->withCount('comment_users')->orderBy('favorite_users_count', 'desc')->orderBy('comment_users_count', 'desc')->paginate(10);
 
-        return view('search.index', [
+        return view('search.word', [
             'keyword' => $keyword,
             'reviews' => $reviews,    
         ]);
@@ -34,7 +35,7 @@ class SearchController extends Controller
     
     public function getReviewsByTag(Request $request)
     {
-        $keyword = $request->tag_name;
+        $keyword = $request->tag;
         $query = Review::query();
         
         if (!empty($keyword)) {
@@ -43,9 +44,9 @@ class SearchController extends Controller
             });
         }
         
-        $reviews = $query->withCount('favorite_users')->withCount('comment_users')->orderBy('created_at', 'desc')->paginate(10);
+        $reviews = $query->withCount('favorite_users')->withCount('comment_users')->orderBy('favorite_users_count', 'desc')->orderBy('comment_users_count', 'desc')->paginate(10);
 
-        return view('search.index', [
+        return view('search.tag', [
             'keyword' => $keyword,
             'reviews' => $reviews,    
         ]);
@@ -60,9 +61,9 @@ class SearchController extends Controller
             $query->where('score', $keyword);
         }
         
-        $reviews = $query->withCount('favorite_users')->withCount('comment_users')->orderBy('created_at', 'desc')->paginate(10);
+        $reviews = $query->withCount('favorite_users')->withCount('comment_users')->orderBy('favorite_users_count', 'desc')->orderBy('comment_users_count', 'desc')->paginate(10);
 
-        return view('search.index', [
+        return view('search.score', [
             'keyword' => $keyword,
             'reviews' => $reviews,    
         ]);
@@ -77,9 +78,9 @@ class SearchController extends Controller
             $query->where('prefecture', $keyword);
         }
         
-        $reviews = $query->withCount('favorite_users')->withCount('comment_users')->orderBy('created_at', 'desc')->paginate(10);
+        $reviews = $query->withCount('favorite_users')->withCount('comment_users')->orderBy('favorite_users_count', 'desc')->orderBy('comment_users_count', 'desc')->paginate(10);
 
-        return view('search.index', [
+        return view('search.prefecture', [
             'keyword' => $keyword,
             'reviews' => $reviews,    
         ]);

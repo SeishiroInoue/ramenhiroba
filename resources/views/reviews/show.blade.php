@@ -61,6 +61,10 @@
                         @endif
                     </div>
                 </div>
+                <div>
+                    {{-- 地図表示 --}}
+                    @include('reviews.map')
+                </div>
             </div>
         </li>
     </ul>

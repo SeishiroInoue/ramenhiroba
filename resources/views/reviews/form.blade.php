@@ -14,6 +14,8 @@
                 </select>
             </div>
         </div>
+        <br>
+        @include('reviews.mapForm')
         {!! Form::submit('レビュー', ['class' => 'btn btn-danger btn-block']) !!} 
     </div>
 {!! Form::close() !!}

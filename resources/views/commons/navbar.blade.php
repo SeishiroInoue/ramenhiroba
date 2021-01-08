@@ -1,11 +1,11 @@
 <header class="mb-4">
     <nav class="navbar navbar-expand-sm navbar-dark bg-warning">
         {{-- トップページへのリンク --}}
-        <a class="navbar-brand" href="/"><font face="ＭＳ 明朝"><b>ラーメン広場</b></font> <img src="https://ramenhiroba.s3-ap-northeast-1.amazonaws.com/ramen-icon.png" width="20" height="20" style="color:white"></a>
+        <a class="navbar-brand" href="/"><font face="ＭＳ 明朝">ラーメン広場</font> <img src="https://ramenhiroba.s3-ap-northeast-1.amazonaws.com/ramen-icon.png" width="20" height="20" style="color:white"></a>
         {{-- 検索フォーム --}}
         <form class="form-inline my-2 my-lg-0 ml-2" action="{{ url('/search') }}">
             <div class="form-group">
-                <input type="search" class="form-control mr-sm-2" name="search"  value="{{ request('search') }}" placeholder="キーワードを入力" aria-label="検索...">
+                <input type="search" class="form-control mr-sm-2" name="word"  value="{{ request('word') }}" placeholder="キーワードを入力" aria-label="検索...">
             </div>
             <input type="submit" value="検索" class="btn btn-danger">
         </form>

@@ -3,12 +3,6 @@
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTWq7JSg8HKhDShFyGLDo8FN9XbIoS1-Y&callback=initMap&libraries=&v=weekly"
     defer
   ></script>
-  <style type="text/css">
-    #map {
-      height: 400px;
-      width: 100%;
-    }
-  </style>
   <script>
   　var latitude = <?php echo $review->latitude ?>;
     var longitude = <?php echo $review->longitude ?>;

@@ -10,6 +10,7 @@
     </div>
     {{-- タブ --}}
     @include('users.navtabs')
+    <br>
     {{-- お気に入りー一覧 --}}
     @include('reviews.reviews')
 @endsection    

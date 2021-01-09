@@ -1,26 +1,34 @@
 @extends('layouts.app')
-
-@section('content')
-    <ul class="list-unstyled">
-        <li class="media mb-3">
-            {{-- ユーザのアイコンを表示 --}}
-            <img class="mr-2 rounded" src="{{ $review->user->icon }}" width="50" height="50" alt="{{ $review->user->name }}">
-            <div class="media-body">
-                <div>
-                    {{-- レビューの所有者のユーザ詳細ページへのリンク --}}
-                    <span><b>{!! link_to_route('users.show', $review->user->name, ['user' => $review->user->id], ['style' => 'color:black']) !!}</b></span>
-                    <span class="text-muted">{{ $review->created_at }}</span>
+    @section('content')
+        {{-- 画像表示 --}}
+        <div style="text-align:center">
+            <img src="{{ $review->photo }}" class="ramen photo" alt="{{ $review->user->name }}のラーメン">
+        </div>
+        <br>
+        <div class="d-flex flex-row">
+            <div class="ramen text">
+                <div class="d-flex flex-row">
+                    <a href="{{ route('users.show', $review->user->id) }}"><img class="mr-2 rounded" src="{{ $review->user->icon }}" width="50" height="50" alt="{{ $review->user->name }}"></a>
+                    <span>
+                        {{-- レビューの所有者のユーザ詳細ページへのリンク --}}
+                        <div><b>{!! link_to_route('users.show', $review->user->name, ['user' => $review->user->id], ['style' => 'color:black']) !!}</b></div>
+                        <div class="text-muted">{{ $review->created_at }}</div>
+                    </span>
                 </div>
+                <div class="d-flex flex-row">
+                    {{-- 都道府県を表示 --}}
+                    @include('reviews.prefecture')
                     {{-- 星を表示　--}}
-                <div>
-                    @switch ($review->score)
-                        @case(5) ⭐️⭐️⭐️⭐️⭐️ @break
-                        @case(4) ⭐️⭐⭐️⭐️ @break  
-                        @case(3) ⭐️⭐️⭐️ @break
-                        @case(2) ⭐️️⭐️ @break
-                        @case(1) ⭐️️ @break
-                    @endswitch    
-                </div>  
+                    <div style="margin:0 5px"> 
+                        @switch ($review->score)
+                            @case(5) <span><a href="{{ route('score.search', ['score' => '5']) }}">⭐️⭐️⭐️⭐️⭐</a></span>@break
+                            @case(4) <span><a href="{{ route('score.search', ['score' => '4']) }}">⭐️⭐️⭐️⭐️</a></span>@break  
+                            @case(3) <span><a href="{{ route('score.search', ['score' => '3']) }}">⭐️⭐️⭐️</a></span>@break
+                            @case(2) <span><a href="{{ route('score.search', ['score' => '2']) }}">⭐️⭐️</a></span>@break
+                            @case(1) <span><a href="{{ route('score.search', ['score' => '1']) }}">⭐️</a></span>@break
+                        @endswitch    
+                    </div>
+                </div>
                 <div>
                     {{-- レビュー内容 --}}
                     <p class="mb-0">{!! nl2br(e($review->content)) !!}</p>
@@ -28,16 +36,10 @@
                 <div>
                     {{-- タグ表示 --}}
                     @foreach ($review->tags as $review_tag)
-                        <span><a href="{{ route('tag.search', ['tag_name' => $review_tag->name]) }}" class="badge badge-warning">{{ $review_tag->name }}</a></span>
+                        <span><a href="{{ route('tag.search', ['tag' => $review_tag->name]) }}" class="badge badge-warning">{{ $review_tag->name }}</a></span>
                     @endforeach
                 </div>
-                <div style="margin:5px 0">
-                    {{-- 画像表示 --}}
-                    <a href="{{ $review->photo }}" data-lightbox="ラーメン">
-                    <img src="{{ $review->photo }}" width="320px" height="180px" style="object-fit:cover" alt="{{ $review->user->name }}のラーメン">
-                    </a>
-                </div>
-                <div class="d-flex flex-row">
+                <div class="d-flex flex-row" style="margin-top:7px" style="position:absolute; bottom:10px">
                     <div style="margin:0 5px 0 0">
                         @if (Auth::user()->is_favoriting($review->id))
                             {{-- 非お気に入りボタン --}}
@@ -51,7 +53,6 @@
                             {!! Form::close() !!}
                         @endif
                     </div>
-                    <div style="margin:3px 0 0 5px">{{ $review->favorite_users_count }}</div>
                     <div>
                         @if (Auth::id() == $review->user_id)
                             {{-- レビュー削除ボタン --}}
@@ -61,20 +62,20 @@
                         @endif
                     </div>
                 </div>
-                <div>
-                    {{-- 地図表示 --}}
-                    @include('reviews.map')
-                </div>
             </div>
-        </li>
-    </ul>
-    {!! Form::open(['route' => 'comments.store', 'enctype' => 'multipart/form-data', 'action' => 'CommentsController.php']) !!}
-    <div class="form-group">
-        {!! Form::hidden('review_id',$review->id) !!}
-        {!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows' => '2']) !!}
-        {!! Form::file('photo', ['class' => 'form-control-file']) !!}
-        {!! Form::submit('コメント', ['class' => 'btn btn-primary btn-block']) !!} 
-    </div>
-    {!! Form::close() !!}
-    @include('reviews.comments')
-@endsection('content')    
+            <div class="ramen map">
+                {{-- 地図表示 --}}
+                @include('reviews.map')
+            </div>
+        </div>
+        <br>
+        {!! Form::open(['route' => 'comments.store', 'enctype' => 'multipart/form-data', 'action' => 'CommentsController.php']) !!}
+        <div class="form-group">
+            {!! Form::hidden('review_id',$review->id) !!}
+            {!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows' => '2']) !!}
+            {!! Form::file('photo', ['class' => 'form-control-file']) !!}<br>
+            {!! Form::submit('コメント', ['class' => 'btn btn-primary btn-block']) !!} 
+        </div>
+        {!! Form::close() !!}
+        @include('reviews.comments')    
+@endsection('content')  

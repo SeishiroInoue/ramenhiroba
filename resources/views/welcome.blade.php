@@ -9,7 +9,7 @@
             @include('reviews.reviews')
         </div>
     @else
-        <div class="center jumbotron" style="background:url(https://ramenhiroba.s3-ap-northeast-1.amazonaws.com/jumbotron-opacity.png) no-repeat top center; background-size:cover">
+        <div class="center jumbotron">
             <div class="text-center">
                 <h1><font face="ヒラギノ"><b>ラーメンを共有しよう</b></font></h1>
                 <div>ラーメン広場 は食べたラーメンの写真と感想を</div>

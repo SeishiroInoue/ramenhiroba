@@ -3,9 +3,9 @@
         <ul class="list-unstyled">
             @foreach ($reviews as $review)
             @if ($review->user)
-                <li class="media mb-3">
+                <li class="media mb-3 reviews" href="{{ route('reviews.show', $review->id) }}" style="margin:0 auto;">
                     {{-- ユーザのアイコンを表示 --}}
-                    <img class="mr-2 rounded" src="{{ $review->user->icon }}" width="50" height="50" alt="{{ $review->user->name }}">
+                    <a href="{{ route('users.show', $review->user->id) }}"><img class="mr-2 rounded" src="{{ $review->user->icon }}" width="50" height="50" alt="{{ $review->user->name }}"></a>
                     <div class="media-body">
                         <div>
                             {{-- レビューの所有者のユーザ詳細ページへのリンク --}}
@@ -36,10 +36,10 @@
                                 <span><a href="{{ route('tag.search', ['tag' => $review_tag->name]) }}" class="badge badge-warning">{{ $review_tag->name }}</a></span>
                             @endforeach
                         </div>
-                        <div style="margin:5px 0">
+                        <div style="margin:10px 0">
                             {{-- 画像表示 --}}
-                            <a href="{{ $review->photo }}" data-lightbox="ラーメン">
-                            <img src="{{ $review->photo }}" width="320px" height="180px" style="object-fit:cover" alt="{{ $review->user->name }}のラーメン">
+                            <a class="thumbnail" href="{{ $review->photo }}" data-lightbox="ラーメン">
+                            <img src="{{ $review->photo }}" width="320px" height="180"px" style="object-fit:cover" alt="{{ $review->user->name }}のラーメン">
                             </a>
                         </div>
                         @if (Auth::check())
@@ -84,3 +84,10 @@
     {{-- ページネーションのリンク --}}
     <div class="pagination justify-content-center">{{ $reviews->links() }}</div>
 @endif
+
+<script>
+    $('li[href]').click(function(){
+        let href = $(this).attr('href');
+        location.href = href;
+    });
+</script>

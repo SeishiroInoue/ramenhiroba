@@ -1,0 +1,42 @@
+.center.jumbotron {
+    background:url(https://ramenhiroba.s3-ap-northeast-1.amazonaws.com/jumbotron-opacity.png) no-repeat top center;
+    background-size:cover
+}
+
+#map {
+      height: 400px;
+      width: 100%;
+    }
+.media.mb-3.reviews {
+    cursor: pointer;
+    width: 50%;
+    background: #fff3cd;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.thumbnail {
+    pointer-events:none;
+}
+
+.click.block {
+    display: inline
+}
+
+.ramen.photo {
+    width: 40%;
+}
+
+.ramen.text {
+    background: #fff3cd; 
+    border-left: #fff3cd solid 10px; 
+    border: #fff3cd solid 1px; 
+    font-size: 100%; padding: 20px;
+    width: 50%;
+    border-radius: 10px;
+}
+
+.ramen.map {
+    width: 50%;
+    margin-left: 1%;
+}

@@ -14,6 +14,7 @@
             {{-- レビューフォーム --}}
              @include('reviews.form')
         @endif
+        <br>
         {{-- レビュー一覧 --}}
         @include('reviews.reviews')
 @endsection    

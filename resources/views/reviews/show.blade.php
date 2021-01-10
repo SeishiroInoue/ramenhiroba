@@ -74,8 +74,8 @@
             {!! Form::open(['route' => 'comments.store', 'enctype' => 'multipart/form-data', 'action' => 'CommentsController.php']) !!}
             <div class="form-group">
                 {!! Form::hidden('review_id',$review->id) !!}
-                {!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows' => '5']) !!}
-                {!! Form::file('photo', ['class' => 'form-control-file']) !!}<br>
+                {!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows'  => '5']) !!}
+                {!! Form::file('photo', ['class' => 'form-control-file mb-3']) !!}
                 {!! Form::submit('コメント', ['class' => 'btn btn-primary btn-block']) !!} 
             </div>
             {!! Form::close() !!}

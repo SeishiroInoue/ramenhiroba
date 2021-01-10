@@ -1,5 +1,5 @@
 {{-- 星を表示　--}}
-<div>
+<div style="position:relative;z-index:2">
     @switch ($review->prefecture)
         @case('北海道') <span><a href="{{ route('prefecture.search', ['prefecture' => '北海道']) }}" class="badge badge-info">北海道</a></span>@break
         @case('青森県') <span><a href="{{ route('prefecture.search', ['prefecture' => '青森県']) }}" class="badge badge-info">青森県</a></span>@break

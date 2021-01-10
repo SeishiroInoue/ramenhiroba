@@ -67,7 +67,7 @@ class ReviewsController extends Controller
         
         $review->tags()->attach($tags_id);
 
-        return back();
+        return redirect('/');
     }
     
     public function destroy($id)
@@ -91,5 +91,10 @@ class ReviewsController extends Controller
         [ 'review' => $review,
           'comments' => $comments,
         ]);
+    }
+    
+    public function CreateForm()
+    {
+        return view('reviews.form', []);
     }
 }

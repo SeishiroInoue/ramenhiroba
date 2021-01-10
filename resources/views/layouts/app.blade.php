@@ -24,7 +24,6 @@
             </div>
     
             <footer style="margin-top:auto;text-align:center">
-                <br>
                 <p class="text-muted"><small>Copyright© 2020-2021 <a href="/" class="text-muted">ラーメン広場<a> All Rights Reserved.</small></p>
             </footer>
         </div>

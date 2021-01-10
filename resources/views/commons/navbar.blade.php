@@ -36,12 +36,16 @@
                             {{-- ログアウトへのリンク --}}
                             <li class="dropdown-item">{!! link_to_route('logout.get', 'ログアウト', [], ['class' => 'text-muted']) !!}</li>
                         </ul>
+                    {{-- フォームページへのリンク --}}
+                    <li>{!! link_to_route('reviews.form', 'レビューする', [], ['class' => 'btn rounded-pill btn-danger my-sm-1']) !!}</li>
                     </li>
                 @else
                     {{-- ユーザ登録ページへのリンク --}}
                     <li class="nav-item">{!! link_to_route('signup.get', '新規登録', [], ['class' => 'nav-link']) !!}</li>
                     {{-- ログインページへのリンク --}}
                     <li class="nav-item">{!! link_to_route('login', 'ログイン', [], ['class' => 'nav-link']) !!}</li>
+                    {{-- フォームページへのリンク --}}
+                    <li>{!! link_to_route('reviews.form', 'レビューする', [], ['class' => 'btn rounded-pill btn-danger']) !!}</li>
                 @endif
             </ul>
         </div>

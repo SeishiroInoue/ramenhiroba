@@ -39,7 +39,7 @@
                     {!! Form::password('password_confirmation', ['class' => 'form-control',  'placeholder' => '必須']) !!}
                 </div>
 
-                {!! Form::submit('変更', ['class' => 'btn btn-danger btn-block']) !!}
+                {!! Form::submit('変更', ['class' => 'btn btn-danger btn-block mb-3']) !!}
             {!! Form::close() !!}
         </div>
     </div>    

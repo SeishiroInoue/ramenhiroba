@@ -3,7 +3,7 @@
         <ul class="list-unstyled">
             @foreach ($comments as $comment)
             @if ($comment->user)
-                <li class="media mb-3">
+                <li class="media comments mb-3 col-lg-6" style="margin:0 auto;">
                     {{-- ユーザのアイコンを表示 --}}
                     <img class="mr-2 rounded" src="{{ $comment->user->icon }}" width="50" height="50" alt="{{ $comment->user->name }}">
                     <div class="media-body">
@@ -41,5 +41,5 @@
     {{-- ページネーションのリンク --}}
     <div class="pagination justify-content-center">{{ $comments->links() }}</div>
 @else
-    <p>コメントはまだありません。</p>
+    <p style="text-align:center">コメントはまだありません。</p>
 @endif

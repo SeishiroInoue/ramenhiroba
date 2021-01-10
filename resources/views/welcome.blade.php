@@ -3,8 +3,6 @@
 @section('content')
     @if (Auth::check())
         <div class="mx-auto">
-            {{-- 投稿フォーム --}}
-            @include('reviews.form')
             {{-- レビュー一覧 --}}
             @include('reviews.reviews')
         </div>

@@ -6,25 +6,23 @@
 #map {
       height: 400px;
       width: 100%;
-    }
-.media.mb-3.reviews {
-    cursor: pointer;
-    width: 50%;
+}
+    
+.media {
     background: #fff3cd;
     border-radius: 10px;
-    padding: 20px;
+    font-size: 100%; padding: 20px;
 }
 
-.thumbnail {
-    pointer-events:none;
+.reviews {
+    cursor: pointer;
 }
 
+.users {
+    cursor: pointer;
+}
 .click.block {
-    display: inline
-}
-
-.ramen.photo {
-    width: 40%;
+    display: inline;
 }
 
 .ramen.text {
@@ -32,11 +30,10 @@
     border-left: #fff3cd solid 10px; 
     border: #fff3cd solid 1px; 
     font-size: 100%; padding: 20px;
-    width: 50%;
     border-radius: 10px;
 }
 
-.ramen.map {
-    width: 50%;
-    margin-left: 1%;
+.none {
+    width: 100%;
+    height: 100%;
 }

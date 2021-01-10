@@ -3,7 +3,7 @@
         <ul class="list-unstyled">
             @foreach ($reviews as $review)
             @if ($review->user)
-                <li class="media mb-3 reviews" href="{{ route('reviews.show', $review->id) }}" style="margin:0 auto;">
+                <li class="media mb-3 col-lg-6 reviews mx-auto" href="{{ route('reviews.show', $review->id) }}" style="z-index:1">
                     {{-- ユーザのアイコンを表示 --}}
                     <a href="{{ route('users.show', $review->user->id) }}"><img class="mr-2 rounded" src="{{ $review->user->icon }}" width="50" height="50" alt="{{ $review->user->name }}"></a>
                     <div class="media-body">
@@ -36,9 +36,9 @@
                                 <span><a href="{{ route('tag.search', ['tag' => $review_tag->name]) }}" class="badge badge-warning">{{ $review_tag->name }}</a></span>
                             @endforeach
                         </div>
-                        <div style="margin:10px 0">
+                        <div class="thumbnail" style="margin:10px 0;z-index:2;pointer-events:none;">
                             {{-- 画像表示 --}}
-                            <a class="thumbnail" href="{{ $review->photo }}" data-lightbox="ラーメン">
+                            <a href="{{ $review->photo }}" data-lightbox="ラーメン">
                             <img src="{{ $review->photo }}" width="320px" height="180"px" style="object-fit:cover" alt="{{ $review->user->name }}のラーメン">
                             </a>
                         </div>
@@ -84,10 +84,3 @@
     {{-- ページネーションのリンク --}}
     <div class="pagination justify-content-center">{{ $reviews->links() }}</div>
 @endif
-
-<script>
-    $('li[href]').click(function(){
-        let href = $(this).attr('href');
-        location.href = href;
-    });
-</script>

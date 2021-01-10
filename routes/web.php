@@ -53,4 +53,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('ranking/reviews', 'RankingsController@reviews')->name('ranking.reviews');
     
     Route::resource('comments', 'CommentsController', ['only' => ['store', 'destroy']]);
+    
+    Route::get('create', 'ReviewsController@CreateForm')->name('reviews.form');
 });

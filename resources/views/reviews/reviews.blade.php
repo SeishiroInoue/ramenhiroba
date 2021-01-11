@@ -1,9 +1,9 @@
 @if (count($reviews) > 0)
-    <div style="position:relative;z-index:1">
+    <div>
         <ul class="list-unstyled">
             @foreach ($reviews as $review)
             @if ($review->user)
-                <li class="media mb-3 col-lg-6 reviews mx-auto">
+                <li class="media mb-3 col-lg-6 reviews mx-auto" style="position:relative;z-index:1">
                     {{-- ユーザのアイコンを表示 --}}
                     <a href="{{ route('users.show', $review->user->id) }}"><img class="mr-2 rounded" src="{{ $review->user->icon }}" width="50" height="50" alt="{{ $review->user->name }}" style="position:relative;z-index:2"></a>
                     <div class="media-body">
@@ -76,13 +76,13 @@
                             </div>
                         @endif
                     </div>
+                    <a href="{{ route('reviews.show', $review->id) }}"
+                       style="position:absolute;width:100%;height:100%;top:0;left:0;text-indent:100%;white-space:nowrap;overflow:hidden;">
+                    </a>
                 </li>
             @endif    
             @endforeach
         </ul>
-        <a href="{{ route('reviews.show', $review->id) }}"
-           style="position:absolute;width:100%;height:100%;top:0;left:0;text-indent:100%;white-space:nowrap;overflow:hidden;">
-        </a>
     </div>
     {{-- ページネーションのリンク --}}
     <div class="pagination justify-content-center">{{ $reviews->links() }}</div>

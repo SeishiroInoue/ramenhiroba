@@ -92,9 +92,4 @@ class ReviewsController extends Controller
           'comments' => $comments,
         ]);
     }
-    
-    public function CreateForm()
-    {
-        return view('reviews.form', []);
-    }
 }

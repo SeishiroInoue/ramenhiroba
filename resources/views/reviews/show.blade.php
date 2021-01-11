@@ -76,9 +76,12 @@
                 {!! Form::hidden('review_id',$review->id) !!}
                 {!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows'  => '5']) !!}
                 {!! Form::file('photo', ['class' => 'form-control-file mb-3']) !!}
-                {!! Form::submit('コメント', ['class' => 'btn btn-primary btn-block']) !!} 
+                <div class="text-center">
+                    {!! Form::submit('コメント', ['class' => 'btn btn-primary btn-lg mb-3']) !!}
+                </div>
             </div>
             {!! Form::close() !!}
         </div>
-        @include('reviews.comments')    
+        @include('reviews.comments')  
+        
 @endsection('content')  

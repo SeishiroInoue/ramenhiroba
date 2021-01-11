@@ -83,7 +83,7 @@ class UsersController extends Controller
     {
         $user = User::findOrFail($id);
         $user->loadRelationshipCounts();
-        $followings = $user->followings()->paginate(10);
+        $followings = $user->followings()->withCount('reviews')->paginate(10);
 
         return view('users.followings', [
             'user' => $user,
@@ -95,7 +95,7 @@ class UsersController extends Controller
     {
         $user = User::findOrFail($id);
         $user->loadRelationshipCounts();
-        $followers = $user->followers()->paginate(10);
+        $followers = $user->followers()->withCount('reviews')->paginate(10);
 
         return view('users.followers', [
             'user' => $user,

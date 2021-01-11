@@ -26,6 +26,18 @@ Route::get('tag', 'SearchController@getReviewsByTag')->name('tag.search');
 Route::get('score', 'SearchController@getReviewsByScore')->name('score.search');
 Route::get('prefecture', 'SearchController@getReviewsByPrefecture')->name('prefecture.search');
 
+Route::get('about', function() {
+    return view('about');
+})->name('about');
+
+Route::get('privacy', function() {
+    return view('privacy');
+})->name('privacy');
+
+Route::get('terms', function() {
+    return view('terms');
+})->name('terms');
+
 Route::group(['middleware' => ['auth']], function () {
     Route::group(['prefix' => 'users/{id}'], function () {
         Route::post('follow', 'UserFollowController@store')->name('user.follow');
@@ -54,5 +66,7 @@ Route::group(['middleware' => ['auth']], function () {
     
     Route::resource('comments', 'CommentsController', ['only' => ['store', 'destroy']]);
     
-    Route::get('create', 'ReviewsController@CreateForm')->name('reviews.form');
+    Route::get('create', function() {
+        return view('reviews.form');
+    })->name('reviews.form');
 });

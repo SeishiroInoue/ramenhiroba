@@ -4,6 +4,8 @@
         <meta charset="utf-8">
         <title>ラーメン広場</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="shortcut icon" href="https://ramenhiroba.s3-ap-northeast-1.amazonaws.com/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://ramenhiroba.s3-ap-northeast-1.amazonaws.com/favicon.ico" type="image/x-icon">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">

@@ -26,9 +26,7 @@
 }
 
 .ramen.text {
-    background: #fff3cd; 
-    border-left: #fff3cd solid 10px; 
-    border: #fff3cd solid 1px; 
-    font-size: 100%; padding: 20px;
+    background: #fff3cd;
     border-radius: 10px;
+    font-size: 100%; padding: 20px;
 }

@@ -11,7 +11,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" type="text/javascript"></script>
     </head>
     <body>
-        <div class="wrapper" style="display:flex;flex-direction:column;min-height:100vh;">
+        <div class="wrapper bg-light" style="display:flex;flex-direction:column;min-height:100vh;">
 
             {{-- ナビゲーションバー --}}
             @include('commons.navbar')
@@ -23,15 +23,7 @@
                 @yield('content')
             </div>
     
-            <footer style="margin-top:auto;text-align:center">
-                <div>
-                    <a class="text-muted" href="{{ route('about') }}">About |</a>
-                    <a class="text-muted" href="{{ route('privacy') }}"> プライバシーポリシー |</a>
-                    <a class="text-muted" href="{{ route('terms') }}"> 利用規約 |</a>
-                    <a class="text-muted" href="https://twitter.com/ramenhiroba" target="_blank"> 公式Twitter</a>
-                </div>    
-                <p  class="text-muted"><small>Copyright© 2020-2021 <a href="/" class="text-muted">ラーメン広場<a> All Rights Reserved.</small></p>
-            </footer>
+            @include('commons.footer')
         </div>
         
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>

@@ -41,13 +41,10 @@ class LoginController extends Controller
     
     public function guestLogin()
     {
-        $name = 'ゲストユーザー';
         $email = 'guest@guest.jp';
-        $icon = 'https://ramenhiroba.s3.ap-northeast-1.amazonaws.com/icon/NKOs7vWgmVaS9uoqnpc5rGvy3tQ5XI0xv9CXX6FR.jpg';
-        $profile = 'ゲストユーザーです';
         $password = 'guestguest';
         
-        if (Auth::attempt(['name' => $name, 'email' => $email, 'icon' => $icon, 'profile' => $profile, 'password' => $password])) {
+        if (Auth::attempt(['email' => $email, 'password' => $password])) {
             return redirect('/');
         }
         

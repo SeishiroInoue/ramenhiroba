@@ -20,7 +20,11 @@
                 <br>
                 <div>ゲストユーザーはこちら</div>    
                 {{-- ゲストログインボタン --}}
-                {!! link_to_route('login.guest', 'ゲストログイン', [], ['class' => 'btn btn-lg btn-outline-primary', 'type' => 'submit']) !!}
+                {!! Form::open(['route' => 'login.guest']) !!}
+                    {!! Form::hidden('email', 'guest@guest.jp') !!}
+                    {!! Form::hidden('password', 'guestguest') !!}
+                    {!! Form::submit('ゲストログイン ', ['class' => 'btn btn-outline-primary btn-lg mb-3']) !!}
+                {!! Form::close() !!}    
                 </div>
             </div>
         </div>

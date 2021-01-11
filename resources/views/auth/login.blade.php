@@ -25,7 +25,11 @@
             <br>
             <spna>ゲストユーザーはこちら</span>    
             {{-- ゲストログインボタン --}}
-            {!! link_to_route('login.guest', 'ゲストログイン', [], ['class' => 'btn btn-danger btn-block', 'type' => 'submit']) !!}
+            {!! Form::open(['route' => 'login.guest']) !!}
+                    {!! Form::hidden('email', 'guest@guest.jp') !!}
+                    {!! Form::hidden('password', 'guestguest') !!}
+                    {!! Form::submit('ゲストログイン ', ['class' => 'btn btn-danger btn-block']) !!}
+            {!! Form::close() !!}  
                 
             {{-- ユーザ登録ページへのリンク --}}
             <p class="mt-2">登録済みでない方は、{!! link_to_route('signup.get', '新規登録') !!}</p>

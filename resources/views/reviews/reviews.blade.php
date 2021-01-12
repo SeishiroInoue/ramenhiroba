@@ -3,7 +3,7 @@
         <ul class="list-unstyled">
             @foreach ($reviews as $review)
             @if ($review->user)
-                <li class="media mb-3 col-lg-6 reviews mx-auto" style="position:relative;z-index:1">
+                <li class="media column col-md-6 reviews content-justify-center" style="position:relative;z-index:1">
                     {{-- ユーザのアイコンを表示 --}}
                     <a href="{{ route('users.show', $review->user->id) }}"><img class="mr-2 rounded" src="{{ $review->user->icon }}" width="50" height="50" alt="{{ $review->user->name }}" style="position:relative;z-index:2"></a>
                     <div class="media-body">
@@ -26,20 +26,22 @@
                                 @endswitch    
                             </div>
                         </div>
-                        <div>
+                        <div class="content" style="position:relative;z-index:2">
                             {{-- レビュー内容 --}}
                             <p class="mb-0">{!! nl2br(e($review->content)) !!}</p>
                         </div>
                         <div>
-                            {{-- タグ表示 --}}
-                            @foreach ($review->tags as $review_tag)
-                                <span><a href="{{ route('tag.search', ['tag' => $review_tag->name]) }}" class="badge badge-warning" style="position:relative;z-index:2">{{ $review_tag->name }}</a></span>
-                            @endforeach
+                            @if ($review->tags)
+                                @foreach ($review->tags as $review_tag)
+                                    <span><a href="{{ route('tag.search', ['tag' => $review_tag->name]) }}" class="badge badge-warning" style="position:relative;z-index:2">{{ $review_tag->name }}</a></span>
+                                @endforeach
+                            @endif    
+                                <span style="color:#fff3cd;">hidden</span>
                         </div>
-                        <div style="margin:10px 0;">
+                        <div class="ramen" style="margin:7px 0;">
                             {{-- 画像表示 --}}
                             <a href="{{ $review->photo }}" data-lightbox="ラーメン">
-                            <img src="{{ $review->photo }}" width="320px" height="180"px" style="object-fit:cover;position:relative;z-index:2" alt="{{ $review->user->name }}のラーメン">
+                            <img src="{{ $review->photo }}" class="ramen" style="position:relative;z-index:2" alt="{{ $review->user->name }}のラーメン">
                             </a>
                         </div>
                         @if (Auth::check())
@@ -61,7 +63,7 @@
                                 <div style="margin:0 5px 0 5px;position:relative;z-index:2">
                                         {{-- コメントボタン --}}
                                         {!! Form::open(['route' => ['reviews.show', $review->id], 'method' => 'get']) !!}
-                                            {!! Form::submit('コメントする', ['class' => 'btn rounded-pill btn-outline-primary btn-sm']) !!}
+                                            {!! Form::submit('コメント', ['class' => 'btn rounded-pill btn-outline-primary btn-sm']) !!}
                                         {!! Form::close() !!}
                                 </div>
                                 <div class="text-muted" style="margin:3px 5px 0 0">{{ $review->comment_users_count }}</div>
@@ -85,5 +87,18 @@
         </ul>
     </div>
     {{-- ページネーションのリンク --}}
-    <div class="pagination justify-content-center">{{ $reviews->links() }}</div>
+    <div class="col-12 pt-3 pagination justify-content-center">{{ $reviews->links() }}</div>
 @endif
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="/js/jquery.collapser.js"></script>
+<script>
+
+  $('.content').collapser({
+    mode: 'chars',
+    truncate: 0,
+    showText: 'レビューを読む',
+    hideText: ' 戻す'
+  });
+
+ </script>

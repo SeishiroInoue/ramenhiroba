@@ -2,12 +2,12 @@
     @section('content')
         {{-- 画像表示 --}}
         <div style="text-align:center">
-            <img src="{{ $review->photo }}" class="ramen photo col-6" alt="{{ $review->user->name }}のラーメン">
+            <img src="{{ $review->photo }}" class="ramen photo col-md-6" alt="{{ $review->user->name }}のラーメン">
         </div>
         <br>
         <div class="container">
             <div class="row">
-                <li class="media mb-3 col-lg-6 mx-auto">
+                <li class="media mb-3 col-md-6 mx-auto">
                     {{-- ユーザのアイコンを表示 --}}
                     <a href="{{ route('users.show', $review->user->id) }}"><img class="mr-2 rounded" src="{{ $review->user->icon }}" width="50" height="50" alt="{{ $review->user->name }}" style="position:relative;z-index:2"></a>
                     <div class="media-body">
@@ -34,10 +34,10 @@
                             {{-- レビュー内容 --}}
                             <p class="mb-0">{!! nl2br(e($review->content)) !!}</p>
                         </div>
-                        <div>
+                        <div style="margin:0 0 7px 0">
                             {{-- タグ表示 --}}
                             @foreach ($review->tags as $review_tag)
-                                <span><a href="{{ route('tag.search', ['tag' => $review_tag->name]) }}" class="badge badge-warning" style="position:relative;z-index:2">{{ $review_tag->name }}</a></span>
+                                <span><a href="{{ route('tag.search', ['tag' => $review_tag->name]) }}" class="badge badge-warning">{{ $review_tag->name }}</a></span>
                             @endforeach
                         </div>
                         @if (Auth::check())
@@ -68,7 +68,7 @@
                         @endif
                     </div>
                 </li>
-                <div class="map mb-3 col-lg-6 mx-auto">
+                <div class="map mb-3 col-md-6 mx-auto">
                     {{-- 地図表示 --}}
                     @include('reviews.map')
                 </div>
@@ -88,4 +88,4 @@
         </div>
         @include('reviews.comments')  
         
-@endsection('content')  
+@endsection

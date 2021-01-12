@@ -4,7 +4,7 @@
 }
 
 #map {
-      height: 400px;
+      height: 500px;
       width: 100%;
 }
     
@@ -12,9 +12,14 @@
     background: #fff3cd;
     border-radius: 10px;
     font-size: 100%; padding: 20px;
+    float: left;
 }
 
-.reviews {
+.media.column {
+    transform:scale(0.95);
+}
+
+.reviews li :not(.content) {
     cursor: pointer;
 }
 
@@ -29,4 +34,14 @@
     background: #fff3cd;
     border-radius: 10px;
     font-size: 100%; padding: 20px;
+}
+
+.ramen img {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.ramen img:hover {
+    opacity: 0.9;
 }

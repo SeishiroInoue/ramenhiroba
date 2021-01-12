@@ -13,7 +13,5 @@
 </span>
 <p>地図上をクリックするとマーカーを移動できます</p>
 
-<head>
 <script type="text/javascript" src="//maps.google.com/maps/api/js?key=AIzaSyBTWq7JSg8HKhDShFyGLDo8FN9XbIoS1-Y"></script>
 <script src="{{ asset('/js/mapForm.js') }}"></script>
-</head>

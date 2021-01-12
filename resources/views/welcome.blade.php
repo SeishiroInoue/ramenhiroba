@@ -33,4 +33,5 @@
         @include('reviews.reviews')
         </div>
     @endif
+    
 @endsection

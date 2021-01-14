@@ -3,7 +3,7 @@
         <ul class="list-unstyled">
             @foreach ($comments as $comment)
             @if ($comment->user)
-                <li class="media comments mb-3 col-lg-6" style="margin:0 auto;">
+                <li class="media comments mb-3 col-md-6" style="margin:0 auto">
                     {{-- ユーザのアイコンを表示 --}}
                     <img class="mr-2 rounded" src="{{ $comment->user->icon }}" width="50" height="50" alt="{{ $comment->user->name }}">
                     <div class="media-body">
@@ -17,10 +17,10 @@
                             <p class="mb-0">{!! nl2br(e($comment->content)) !!}</p>
                         </div>
                         @if ($comment->photo) 
-                            <div style="margin:0 0 7px 0">
+                            <div class="ramen" style="margin:0 0 7px 0">
                                 {{-- 画像表示 --}}
                                 <a href="{{ $comment->photo }}" data-lightbox="ラーメン">
-                                    <img src="{{ $comment->photo }}" width="320px" height="180px" style="object-fit:cover" alt="{{ $comment->user->name }}のラーメン">
+                                    <img src="{{ $comment->photo }}" class="ramen" alt="{{ $comment->user->name }}のラーメン">
                                 </a>
                             </div>
                         @endif

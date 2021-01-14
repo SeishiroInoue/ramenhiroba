@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
     @section('content')
         {{-- 画像表示 --}}
         <div style="text-align:center">
@@ -7,7 +8,7 @@
         <br>
         <div class="container">
             <div class="row">
-                <li class="media mb-3 col-md-6 mx-auto">
+                <li class="media review mb-3 col-md-6 mx-auto">
                     {{-- ユーザのアイコンを表示 --}}
                     <a href="{{ route('users.show', $review->user->id) }}"><img class="mr-2 rounded" src="{{ $review->user->icon }}" width="50" height="50" alt="{{ $review->user->name }}" style="position:relative;z-index:2"></a>
                     <div class="media-body">
@@ -81,7 +82,7 @@
                 {!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows'  => '5']) !!}
                 {!! Form::file('photo', ['class' => 'form-control-file mb-3']) !!}
                 <div class="text-center">
-                    {!! Form::submit('コメント', ['class' => 'btn btn-primary btn-lg mb-3']) !!}
+                    {!! Form::submit('コメント', ['class' => 'btn btn-primary btn-lg']) !!}
                 </div>
             </div>
             {!! Form::close() !!}

@@ -21,8 +21,8 @@ class CreateCommentsTable extends Migration
             $table->string('photo')->nullable();
             $table->timestamps();
             
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('review_id')->references('id')->on('reviews');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('review_id')->references('id')->on('reviews')->onDelete('cascade');
         });
     }
 

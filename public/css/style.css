@@ -12,10 +12,16 @@
     background: #fff3cd;
     border-radius: 10px;
     font-size: 100%; padding: 20px;
+}
+
+.media.reviews,
+.media.review,
+.media.users {
     float: left;
 }
 
-.media.column {
+.media.reviews,
+.media.users {
     transform:scale(0.95);
 }
 

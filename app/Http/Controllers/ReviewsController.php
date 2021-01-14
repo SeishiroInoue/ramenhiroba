@@ -85,7 +85,7 @@ class ReviewsController extends Controller
     public function show($id)
     {
         $review = Review::findOrFail($id);
-        $comments = Comment::where('review_id', $id)->orderBy('created_at','desc')->paginate(10);
+        $comments = Comment::where('review_id', $id)->orderBy('created_at','desc')->paginate(5);
         
         return view('reviews.show', 
         [ 'review' => $review,

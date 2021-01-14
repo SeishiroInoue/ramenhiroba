@@ -2,8 +2,7 @@
     <div>
         <ul class="list-unstyled">
             @foreach ($reviews as $review)
-            @if ($review->user)
-                <li class="media column col-md-6 reviews content-justify-center" style="position:relative;z-index:1">
+                <li class="media reviews col-md-6 content-justify-center" style="position:relative;z-index:1">
                     {{-- ユーザのアイコンを表示 --}}
                     <a href="{{ route('users.show', $review->user->id) }}"><img class="mr-2 rounded" src="{{ $review->user->icon }}" width="50" height="50" alt="{{ $review->user->name }}" style="position:relative;z-index:2"></a>
                     <div class="media-body">
@@ -82,12 +81,11 @@
                        style="position:absolute;width:100%;height:100%;top:0;left:0;text-indent:100%;white-space:nowrap;overflow:hidden;">
                     </a>
                 </li>
-            @endif    
             @endforeach
         </ul>
     </div>
     {{-- ページネーションのリンク --}}
-    <div class="col-12 pt-3 pagination justify-content-center">{{ $reviews->links() }}</div>
+    <div class="col-12 pt-3 ml-2 pagination justify-content-center">{{ $reviews->links() }}</div>
 @endif
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -101,4 +99,4 @@
     hideText: ' 戻す'
   });
 
- </script>
+</script>

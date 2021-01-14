@@ -2,7 +2,7 @@
 
 @section('content')
     <h1 class="text-center">
-        <i class="fas fa-crown"></i> ランキング <i class="fas fa-crown"></i>
+        ランキング
     </h1>
     @include('rankings.navtabs')
     <hr>

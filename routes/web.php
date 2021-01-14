@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'ReviewsController@index');
+Route::get('/', 'ReviewsController@index')->name('welcome');
 
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
 Route::post('signup', 'Auth\RegisterController@register')->name('signup.post');
@@ -59,7 +59,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('delete_confirm', 'UsersController@delete_confirm')->name('user.delete_confirm');
     
     Route::resource('reviews', 'ReviewsController', ['only' => ['store', 'destroy', 'show']]);
-    
+    Route::get('timeline', 'ReviewsController@getReviewsByFollowings')->name('timeline');
+
     Route::get('ranking/favorites', 'RankingsController@favorites')->name('ranking.favorites');
     Route::get('ranking/comments', 'RankingsController@comments')->name('ranking.comments');
     Route::get('ranking/reviews', 'RankingsController@reviews')->name('ranking.reviews');

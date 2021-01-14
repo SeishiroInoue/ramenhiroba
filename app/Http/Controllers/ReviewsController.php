@@ -14,23 +14,10 @@ class ReviewsController extends Controller
 {
     public function index()
     {
-        $data = [];
-        if (\Auth::check()) {
-            $user = \Auth::user();
-            $reviews = $user->feed_reviews()->withCount('favorite_users')->withCount('comment_users')->orderBy('created_at', 'desc')->paginate(10);
-            
-            $data = [
-                'user' => $user,
-                'reviews' => $reviews,
-            ];
-            return view('welcome', $data);
-        } else {
-            $reviews = Review::orderBy('created_at','desc')->paginate(10);
+        $reviews = Review::withCount('favorite_users')->withCount('comment_users')->orderBy('created_at','desc')->paginate(10);
             return view('welcome', 
             [ 'reviews' => $reviews,
             ]);
-        }
-        
     }
     
     public function store(Request $request)
@@ -86,10 +73,27 @@ class ReviewsController extends Controller
     {
         $review = Review::findOrFail($id);
         $comments = Comment::where('review_id', $id)->orderBy('created_at','desc')->paginate(5);
+        $same_reviews = Review::withCount('favorite_users')->withCount('comment_users')->where('latitude', $review->latitude)->where('longitude', $review->longitude)->where('id', '<>', $review->id)->orderBy('created_at','desc')->paginate(2);
         
         return view('reviews.show', 
         [ 'review' => $review,
           'comments' => $comments,
+          'same_reviews' => $same_reviews,
         ]);
+    }
+    
+    public function getReviewsByFollowings()
+    {
+        $data = [];
+        if (\Auth::check()) {
+            $user = \Auth::user();
+            $reviews = $user->feed_reviews()->withCount('favorite_users')->withCount('comment_users')->orderBy('created_at', 'desc')->paginate(10);
+            
+            $data = [
+                'user' => $user,
+                'reviews' => $reviews,
+            ];
+            return view('reviews.timeline', $data);
+        } 
     }
 }

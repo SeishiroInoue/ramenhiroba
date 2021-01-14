@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="text-center">
-        <h1>レビューする</h1>
+        <h1><b>レビューする</b></h1>
     </div>
     <div class="row">
         <div class="col-sm-8 offset-sm-2">

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="text-center">
-        <h1>登録情報変更</h1>
+        <h1><b>登録情報変更</b></h1>
     </div>
     
     <div class="row">

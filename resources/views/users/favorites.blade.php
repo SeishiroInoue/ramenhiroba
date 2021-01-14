@@ -2,7 +2,7 @@
 
 @section('content')
     @include('users.card')
-    <h4 class="cardtitle text-center"><b>{{ $user->name }}</b></h4>
+    <h3 class="cardtitle text-center"><b>{{ $user->name }}</b></h3>
     {{-- フォロー／アンフォローボタン --}}
     @include('user_follow.follow_button')
     <div class="text-center">

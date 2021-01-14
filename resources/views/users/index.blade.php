@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="text-center">
-        <h1>ユーザー</h1>
+        <h1><b>ユーザー</b></h1>
         <hr>
     </div>
     {{-- ユーザ一覧 --}}

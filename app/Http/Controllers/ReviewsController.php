@@ -15,9 +15,12 @@ class ReviewsController extends Controller
     public function index()
     {
         $reviews = Review::withCount('favorite_users')->withCount('comment_users')->orderBy('created_at','desc')->paginate(10);
-            return view('welcome', 
+        $tags = Tag::withCount('reviews')->orderBy('reviews_count', 'desc')->paginate(30);
+        
+        return view('welcome', 
             [ 'reviews' => $reviews,
-            ]);
+              'tags' => $tags,
+         ]);
     }
     
     public function store(Request $request)
@@ -27,7 +30,7 @@ class ReviewsController extends Controller
             'photo' => 'required|image|max:5120'
         ]);
         
-        preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶ一-龥]+)/u', $request->tags, $match);
+        preg_match_all('/#([a-zA-z0-9０-９ぁ-んァ-ヶー一-龥]+)/u', $request->tags, $match);
         $tags = [];
         foreach ($match[1] as $tag) {
             $record = Tag::firstOrCreate(['name' => $tag]);
@@ -88,12 +91,15 @@ class ReviewsController extends Controller
         if (\Auth::check()) {
             $user = \Auth::user();
             $reviews = $user->feed_reviews()->withCount('favorite_users')->withCount('comment_users')->orderBy('created_at', 'desc')->paginate(10);
+            $tags = Tag::withCount('reviews')->orderBy('reviews_count', 'desc')->paginate(30);
             
             $data = [
                 'user' => $user,
                 'reviews' => $reviews,
+                'tags' => $tags,
             ];
+            
             return view('reviews.timeline', $data);
-        } 
+        }
     }
 }

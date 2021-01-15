@@ -14,7 +14,7 @@
             </div>
             
             <div class="form-group">
-                {!! Form::label('tags', 'タグ') !!}
+                {!! Form::label('tags', 'タグ') !!} {!! Form::label('tags', '※任意',  ['class' => 'text-muted']) !!}
                 {!! Form::text('tags', old('tags'), ['class' => 'form-control', 'placeholder' => '#家系#二郎系']) !!}
             </div>  
             

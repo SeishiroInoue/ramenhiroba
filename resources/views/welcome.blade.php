@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
     @if (Auth::check())
         <h1 class="text-center"><b>レビュー</b></h1>
         <div class="nav nav-pills justify-content-center">
@@ -16,6 +17,10 @@
         <hr>
         {{-- レビュー一覧 --}}
         @include('reviews.reviews')
+        <div>
+        {{-- タグ一覧 --}}
+        @include('reviews.tags')
+        
     @else
         <div class="center jumbotron">
             <div class="text-center">
@@ -38,6 +43,8 @@
         </div>
         {{-- レビュー一覧 --}}
         @include('reviews.reviews')
+        {{-- タグ一覧 --}}
+        @include('reviews.tags')       
     @endif
     
 @endsection

@@ -126,7 +126,10 @@ return [
 
     'custom' => [
         'password' => [
-            'confirmed' => 'パスワードが違います。',
+            'confirmed' => 'パスワードが再入力の値と一致しません。',
+        ],
+        'new_password' => [
+            'confirmed' => '新しいパスワードが再入力の値と一致しません。',
         ],
     ],
 
@@ -149,6 +152,8 @@ return [
         'icon' => 'アイコン',
         'content'=> 'レビュー内容',
         'photo' => '写真',
+        'new_password' =>'新しいパスワード',
+        'current_password' => '現在のパスワード',
     ],
 
 ];

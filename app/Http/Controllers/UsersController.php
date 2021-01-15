@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -37,13 +38,25 @@ class UsersController extends Controller
         ]);
     }
     
+    public function editPassword()
+    {
+        $user = Auth::user();
+        return view('profile.editPassword', [
+            'user' => $user, 
+        ]);
+    }
     
     public function update(Request $request)
     {
         $request->validate([
             'name' => 'required|string|max:50',
             'email' => 'required|string|email|max:255|unique:users,email,'.\Auth::id().',id',
-            'password' => 'required|string|min:8|confirmed',
+            'password' => ['required', 'confirmed', function ($attribute, $value, $fail) {
+                    if (!Hash::check($value, Auth::user()->password)) {
+                        $fail('パスワードが違います');
+                    }
+                }
+            ],
             'profile' => 'string|max:150',
             'icon' => 'image|max:5120',
         ]);
@@ -51,7 +64,6 @@ class UsersController extends Controller
         $user = User::findOrFail(Auth::id());
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = $request->password;
         $user->profile = $request->profile;
         if ($request->icon) {
             $file = $request->icon;
@@ -60,6 +72,25 @@ class UsersController extends Controller
             $user->icon = $url;
         }
         
+        $user->save();
+        
+        return redirect('/');
+    }
+    
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => ['required', function ($attribute, $value, $fail) {
+                    if (!Hash::check($value, Auth::user()->password)) {
+                        $fail('現在のパスワードが違います');
+                    }
+                }
+            ],
+            'new_password' => 'required|string|min:8|confirmed',
+        ]);
+        
+        $user = User::findOrFail(Auth::id());
+        $user->password = Hash::make($request['new_password']);
         $user->save();
         
         return redirect('/');

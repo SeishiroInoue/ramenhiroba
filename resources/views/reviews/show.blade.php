@@ -91,7 +91,7 @@
         @include('reviews.comments')  
         {{-- 同じ店舗のレビュー表示 --}}
         @if (count($same_reviews) > 0)
-            <p><b>同じ店舗のレビュー</b></p>
+            <p><b>同じ店舗の他のレビュー</b></p>
             <hr>
             @include('reviews.sameReviews')  
         @endif

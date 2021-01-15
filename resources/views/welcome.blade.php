@@ -31,8 +31,6 @@
                 <div>ゲストユーザーはこちら</div>    
                 {{-- ゲストログインボタン --}}
                 {!! Form::open(['route' => 'login.guest']) !!}
-                    {!! Form::hidden('email', 'guest@guest.jp') !!}
-                    {!! Form::hidden('password', 'guestguest') !!}
                     {!! Form::submit('ゲストログイン ', ['class' => 'btn btn-outline-primary btn-lg mb-3']) !!}
                 {!! Form::close() !!}    
                 </div>

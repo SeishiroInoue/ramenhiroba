@@ -40,10 +40,12 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
     
-    public function guestLogin(Request $request )
+    public function guestLogin(Request $request)
     {
+        $email = 'guest@guest.jp';
+        $password = 'guestguest';
 
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+        if (Auth::attempt(['email' => $email, 'password' => $password])) {
             return redirect('/');
         }
         

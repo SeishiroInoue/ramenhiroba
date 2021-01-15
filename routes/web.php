@@ -55,7 +55,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('users', 'UsersController', ['only' => ['index', 'show', 'destroy']]); 
     
     Route::get('profile/edit', 'UsersController@edit')->name('profile.edit');
-    Route::put('profile/update', 'UsersController@update')->name('profile.update'); 
+    Route::put('profile/update', 'UsersController@update')->name('profile.update');
+    Route::get('profile/password/edit', 'UsersController@editPassword')->name('password.edit');
+    Route::put('profile/password/update', 'UsersController@updatePassword')->name('password.update');
+    
     Route::get('delete_confirm', 'UsersController@delete_confirm')->name('user.delete_confirm');
     
     Route::resource('reviews', 'ReviewsController', ['only' => ['store', 'destroy', 'show']]);

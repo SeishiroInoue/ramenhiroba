@@ -12,17 +12,17 @@
         </a>
     </div>
 </div>
-<ul class="nav nav-tabs nav-justified">
+<ul class="nav nav-tabs nav-justified font-weight-bold"> 
     {{-- タイムラインタブ --}}
     <li class="nav-item">
-        <a href="{{ route('users.show', ['user' => $user->id]) }}" class="nav-link {{ Request::routeIs('users.show') ? 'active' : '' }}">
-            <span class="badge badge-primary">{{ $user->reviews_count }}件</span> <span class="text-muted">レビュー</span>
+        <a href="{{ route('users.show', ['user' => $user->id]) }}" class="nav-link {{ Request::routeIs('users.show') ? 'active' : 'text-muted' }}">
+            <span class="badge badge-primary">{{ $user->reviews_count }}件</span> <span>レビュー</span>
         </a>
     </li>
     {{-- お気に入り一覧タブ --}}
     <li class="nav-item">
-        <a href="{{ route('users.favorites', ['id' => $user->id]) }}" class="nav-link {{ Request::routeIs('users.favorites') ? 'active' : '' }}">
-            <span class="badge badge-primary">{{ $user->favorites_count }}件</span> <span class="text-muted">お気に入り</span>
+        <a href="{{ route('users.favorites', ['id' => $user->id]) }}" class="nav-link {{ Request::routeIs('users.favorites') ? 'active' : 'text-muted' }}">
+            <span class="badge badge-primary">{{ $user->favorites_count }}件</span> <span>お気に入り</span>
         </a>
     </li>
 </ul>

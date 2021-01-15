@@ -30,17 +30,20 @@
                 </div>
 
                 <div class="form-group">
-                    {!! Form::label('password', 'パスワード') !!}
-                    {!! Form::password('password', ['class' => 'form-control', 'placeholder' => '必須']) !!}
+                    {!! Form::label('password', 'パスワード') !!} {!! Form::label('password', '※必須',  ['class' => 'alert-danger']) !!}
+                    {!! Form::password('password', ['class' => 'form-control']) !!}
                 </div>
-
+              
                 <div class="form-group">
-                    {!! Form::label('password_confirmation', 'パスワード(再入力)') !!}
-                    {!! Form::password('password_confirmation', ['class' => 'form-control',  'placeholder' => '必須']) !!}
+                    {!! Form::label('password_confirmation', 'パスワード（再入力）') !!} {!! Form::label('password', '※必須',  ['class' => 'alert-danger']) !!}
+                    {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
                 </div>
-
+    
                 {!! Form::submit('変更', ['class' => 'btn btn-danger btn-block mb-3']) !!}
             {!! Form::close() !!}
+            
+            {{-- パスワード変更ページへのリンク --}}
+            <p class="mt-2">パスワードの変更は、{!! link_to_route('password.edit', 'パスワード変更') !!}</p>
         </div>
     </div>    
 @endsection('content')    

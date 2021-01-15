@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="text-center">
-        <h1>新規登録</h1>
+        <h1><b>新規登録</b></h1>
+        <span class="alert-danger">※全て必須</span>
     </div>
 
     <div class="row">
@@ -35,7 +36,7 @@
                 </div>
 
                 <div class="form-group">
-                    {!! Form::label('password_confirmation', 'パスワード(再入力)') !!}
+                    {!! Form::label('password_confirmation', 'パスワード（再入力）') !!}
                     {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
                 </div>
 

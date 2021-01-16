@@ -18,8 +18,12 @@
         {{-- レビュー一覧 --}}
         @include('reviews.reviews')
         <div>
+        <br>
         {{-- タグ一覧 --}}
         @include('reviews.tags')
+        <br>
+        {{-- 日本地図 --}}
+        @include('reviews.mapJapan')
         
     @else
         <div class="center jumbotron">
@@ -31,20 +35,24 @@
                 {!! link_to_route('signup.get', '新規登録', [], ['class' => 'btn btn-lg btn-outline-primary']) !!}
                 {{-- ログインページへのリンク --}}
                 {!! link_to_route('login', 'ログイン', [], ['class' => 'btn btn-lg btn-outline-primary']) !!}
-                <div>
+                <div class="guest">
                 <br>
                 <div>ゲストユーザーはこちら</div>    
-                {{-- ゲストログインボタン --}}
-                {!! Form::open(['route' => 'login.guest']) !!}
-                    {!! Form::submit('ゲストログイン ', ['class' => 'btn btn-outline-primary btn-lg mb-3']) !!}
-                {!! Form::close() !!}    
+                    {{-- ゲストログインボタン --}}
+                    {!! Form::open(['route' => 'login.guest']) !!}
+                        {!! Form::submit('ゲストログイン ', ['class' => 'btn btn-outline-primary btn-lg mb-3']) !!}
+                    {!! Form::close() !!}
                 </div>
             </div>
         </div>
         {{-- レビュー一覧 --}}
         @include('reviews.reviews')
+        <br>
         {{-- タグ一覧 --}}
-        @include('reviews.tags')       
+        @include('reviews.tags')
+        <br>
+        {{-- タグ一覧 --}}
+        @include('reviews.mapJapan')
     @endif
     
 @endsection

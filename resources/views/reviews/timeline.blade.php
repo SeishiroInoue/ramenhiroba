@@ -17,8 +17,12 @@
         <hr>
         {{-- レビュー一覧 --}}
         @include('reviews.reviews')
+        <br>
         {{-- タグ一覧 --}}
-        @include('reviews.tags')       
+        @include('reviews.tags')
+        <br>
+        {{-- 日本地図 --}}
+        @include('reviews.mapJapan')
     @endif
     
 @endsection    

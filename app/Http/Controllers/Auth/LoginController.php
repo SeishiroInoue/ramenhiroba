@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\User;
 
 class LoginController extends Controller
 {
@@ -40,15 +41,14 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
     
+    private const GUEST_USER_ID = 1;
+    
     public function guestLogin(Request $request)
     {
-        $email = 'guest@guest.jp';
-        $password = 'guestguest';
-
-        if (Auth::attempt(['email' => $email, 'password' => $password])) {
+        if (Auth::loginUsingId(self::GUEST_USER_ID)) {
             return redirect('/');
         }
-        
+
         return redirect('/');
     }
 }

@@ -66,10 +66,24 @@ class ReviewsController extends Controller
 
         if (\Auth::id() === $review->user_id) {
             $review->comments()->delete();
+            $review->tags()->delete();
             $review->delete();
         }
 
         return back();
+    }
+    
+    public function destroyAtShow($id)
+    {
+        $review = Review::findOrFail($id);
+
+        if (\Auth::id() === $review->user_id) {
+            $review->comments()->delete();
+            $review->tags()->delete();
+            $review->delete();
+        }
+
+        return redirect('/');
     }
     
     public function show($id)

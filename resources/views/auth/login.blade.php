@@ -34,7 +34,7 @@
             </div>
                 
             {{-- ユーザ登録ページへのリンク --}}
-            <p class="mt-2">登録済みでない方は、{!! link_to_route('signup.get', '新規登録') !!}</p>
+            <p class="mt-2">{!! link_to_route('signup.get', '新規登録はこちら') !!}</p>
         </div>
     </div>
 @endsection

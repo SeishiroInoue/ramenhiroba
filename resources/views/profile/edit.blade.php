@@ -43,7 +43,7 @@
             {!! Form::close() !!}
             
             {{-- パスワード変更ページへのリンク --}}
-            <p class="mt-2">パスワードの変更は、{!! link_to_route('password.edit', 'パスワード変更') !!}</p>
+            <p class="mt-2">{!! link_to_route('password.edit', 'パスワード変更はこちら') !!}</p>
         </div>
     </div>    
 @endsection('content')    

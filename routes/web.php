@@ -61,7 +61,9 @@ Route::group(['middleware' => ['auth']], function () {
     
     Route::get('delete_confirm', 'UsersController@delete_confirm')->name('user.delete_confirm');
     
-    Route::resource('reviews', 'ReviewsController', ['only' => ['store', 'destroy', 'show']]);
+    Route::resource('reviews', 'ReviewsController', ['only' => ['store', 'show']]);
+    Route::post('reviews/delete/{id}', 'ReviewsController@destroy')->name('reviews.destroy');
+    Route::post('reviews/show/delete/{id}', 'ReviewsController@destroyAtShow')->name('show.destroy');
     Route::get('timeline', 'ReviewsController@getReviewsByFollowings')->name('timeline');
 
     Route::get('ranking/favorites', 'RankingsController@favorites')->name('ranking.favorites');

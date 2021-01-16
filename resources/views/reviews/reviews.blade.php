@@ -70,9 +70,10 @@
                                 @if (Auth::id() == $review->user_id)
                                     <div style="position:relative;z-index:2">
                                         {{-- レビュー削除ボタン --}}
-                                        {!! Form::open(['route' => ['reviews.destroy', $review->id], 'method' => 'delete']) !!}
-                                            {!! Form::submit('削除', ['class' => 'btn rounded-pill btn-outline-danger btn-sm']) !!}
-                                        {!! Form::close() !!}
+                                        <form action="/reviews/delete/{{$review->id}}" method="POST">
+                                            {{ csrf_field() }}
+                                            <input type="submit" value="削除" class="btn rounded-pill btn-outline-danger btn-sm review-delete">
+                                        </form>
                                     </div>
                                 @endif   
                             </div>
@@ -94,10 +95,18 @@
 <script>
 
   $('.content').collapser({
-    mode: 'chars',
-    truncate: 0,
-    showText: 'レビューを読む',
-    hideText: ' 戻す'
+      mode: 'chars',
+      truncate: 0,
+      showText: 'レビューを読む',
+      hideText: ' 戻す'
+  });
+  
+  $(".review-delete").click(function(){
+      if(confirm("本当に削除しますか？")){
+      
+      }else{
+      return false;
+      }
   });
 
 </script>

@@ -14,14 +14,14 @@
                     <div class="media-body">
                         <div>
                             {{-- レビューの所有者のユーザ詳細ページへのリンク --}}
-                            <span style="position:relative;z-index:2"><b>{!! link_to_route('users.show', $review->user->name, ['user' => $review->user->id], ['style' => 'color:black']) !!}</b></span>
+                            <span><b>{!! link_to_route('users.show', $review->user->name, ['user' => $review->user->id], ['style' => 'color:black']) !!}</b></span>
                             <span class="text-muted">{{ $review->created_at }}</span>
                         </div>
                         <div class="d-flex flex-row">
                             {{-- 都道府県を表示 --}}
                             @include('reviews.prefecture')
                             {{-- 星を表示　--}}
-                            <div style="margin:0 5px;position:relative;z-index:2"> 
+                            <div style="margin:0 5px"> 
                                 @switch ($review->score)
                                     @case(5) <span><a href="{{ route('score.search', ['score' => '5']) }}">⭐️⭐️⭐️⭐️⭐</a></span>@break
                                     @case(4) <span><a href="{{ route('score.search', ['score' => '4']) }}">⭐️⭐️⭐️⭐️</a></span>@break  
@@ -31,19 +31,22 @@
                                 @endswitch    
                             </div>
                         </div>
-                        <div>
+                        <div class="content-show">
                             {{-- レビュー内容 --}}
                             <p class="mb-0">{!! nl2br(e($review->content)) !!}</p>
                         </div>
-                        <div style="margin:0 0 7px 0">
+                        <div>
                             {{-- タグ表示 --}}
-                            @foreach ($review->tags as $review_tag)
-                                <span><a href="{{ route('tag.search', ['tag' => $review_tag->name]) }}" class="badge badge-warning">{{ $review_tag->name }}</a></span>
-                            @endforeach
+                            @if ($review->tags)
+                                @foreach ($review->tags as $review_tag)
+                                    <span><a href="{{ route('tag.search', ['tag' => $review_tag->name]) }}" class="badge badge-warning" style="position:relative;z-index:2">{{ $review_tag->name }}</a></span>
+                                @endforeach
+                            @endif    
+                                <span style="color:#fff3cd;">hidden</span>
                         </div>
                         @if (Auth::check())
                             <div class="d-flex flex-row">
-                                <div style="position:relative;z-index:2">
+                                <div>
                                     @if (Auth::user()->is_favoriting($review->id))
                                         {{-- 非お気に入りボタン --}}
                                         {!! Form::open(['route' => ['favorites.unfavorite', $review->id], 'method' => 'delete']) !!}
@@ -58,11 +61,12 @@
                                 </div>
                                 <div class="text-muted" style="margin:3px 5px 0 0">{{ $review->comment_users_count }}</div>
                                 @if (Auth::id() == $review->user_id)
-                                    <div style="position:relative;z-index:2">
+                                    <div>
                                         {{-- レビュー削除ボタン --}}
-                                        {!! Form::open(['route' => ['reviews.destroy', $review->id], 'method' => 'delete']) !!}
-                                            {!! Form::submit('削除', ['class' => 'btn rounded-pill btn-outline-danger btn-sm']) !!}
-                                        {!! Form::close() !!}
+                                        <form action="/reviews/show/delete/{{$review->id}}" method="POST">
+                                            {{ csrf_field() }}
+                                            <input type="submit" value="削除" class="btn rounded-pill btn-outline-danger btn-sm review-show-delete">
+                                        </form>
                                     </div>
                                 @endif   
                             </div>
@@ -95,5 +99,26 @@
             <hr>
             @include('reviews.sameReviews')  
         @endif
+        
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="/js/jquery.collapser.js"></script>
+<script>
+
+  $('.content-show').collapser({
+      mode: 'lines',
+      truncate: 15,
+      showText: 'レビューを読む',
+      hideText: ' 戻す'
+  });
+  
+  $(".review-show-delete").click(function(){
+      if(confirm("本当に削除しますか？")){
+    　
+      }else{
+      return false;
+      }
+  });
+
+</script>        
         
 @endsection

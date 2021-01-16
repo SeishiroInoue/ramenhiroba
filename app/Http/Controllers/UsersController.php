@@ -105,8 +105,10 @@ class UsersController extends Controller
     public function destroy()
     {
         $user = User::findOrFail(Auth::id());
-        $user->delete();
-        
+        if (Auth::id() != 1) {
+            $user->delete();
+        }
+
         return redirect('/');
     }
     

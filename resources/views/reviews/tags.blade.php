@@ -4,7 +4,7 @@
         <ul class-"list-inline list-unstyled">
             @foreach ($tags as $tag)
             <li class="list-inline-item pb-3">
-                <a href="{{ route('tag.search', ['tag' => $tag->name]) }}" class="btn btn-warning">{{ $tag->name }}</a></li>
+                <a href="{{ route('tag.search', ['tag' => $tag->name]) }}" class="btn btn-warning tags">{{ $tag->name }}</a></li>
             </li>
             @endforeach
         </ul>

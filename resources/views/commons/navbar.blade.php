@@ -1,5 +1,5 @@
 <header class="mb-4">
-    <nav class="navbar navbar-expand-sm navbar-dark bg-warning">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-warning fixed-top">
         {{-- トップページへのリンク --}}
         <a class="navbar-brand" href="/"><font face="ＭＳ 明朝"><b>ラーメン広場</b></font> <img src="https://ramenhiroba.s3-ap-northeast-1.amazonaws.com/ramen-icon.png" width="20" height="20" style="color:white"></a>
 

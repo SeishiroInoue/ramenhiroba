@@ -5,14 +5,16 @@
 
 /* 詳細ページでマップ表示 */
 #map {
-      height: 500px;
-      width: 100%;
+    height: 500px;
+    width: 100%;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.3);
 }
     
 .media {
     background: #fff3cd;
     border-radius: 10px;
     font-size: 100%; padding: 20px;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.3);
 }
 
 .media.reviews,
@@ -26,7 +28,7 @@
     transform:scale(0.95);
 }
 
-.reviews li :not(.content) {
+.media.reviews li :not(.content) {
     cursor: pointer;
 }
 
@@ -53,11 +55,6 @@
     opacity: 0.9;
 }
 
-/*
-.guest {
-    display: none;
-}
-
 /* 日本地図DOM */
 .japan_map{
     position: relative;
@@ -65,6 +62,7 @@
     margin: 0 auto;
     display: table;
     background-color: #adf6ff;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.3);
 }
 /* 日本地図画像（スマホ対応用） */
 .japan_map img{
@@ -72,6 +70,7 @@
     height: auto;
     border: 0;
     -webkit-backface-visibility: hidden;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.3);
 }
 /* 日本地図ボタン */
 .japan_map .area_btn{
@@ -171,4 +170,31 @@
     .japan_map .area_btn{
         font-size: 4vw;
     }
+}
+
+.navbar {
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.3);
+}
+
+body {
+    padding-top:3.5rem;
+}
+
+.ramen.photo {
+    width: 50%;
+}
+
+@media screen and (max-width: 767px){
+    .ramen.photo {
+        width: 100%;
+    }
+}
+
+.tags {
+    box-shadow: 0 3px 0 rgba(136,136,136,1);
+}
+
+.tags:hover {
+    box-shadow: 0 1px 0 rgba(136,136,136,1);
+    transform: translate3d(0, 1px, 0);
 }

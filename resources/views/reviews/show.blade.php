@@ -2,8 +2,8 @@
 
     @section('content')
         {{-- 画像表示 --}}
-        <div style="text-align:center">
-            <img src="{{ $review->photo }}" class="ramen photo col-md-6" alt="{{ $review->user->name }}のラーメン">
+        <div style="text-align:center;">
+            <img src="{{ $review->photo }}" class="ramen photo" alt="{{ $review->user->name }}のラーメン" style="box-shadow: 0 5px 10px 0 rgba(0,0,0,0.3);">
         </div>
         <br>
         <div class="container">
@@ -45,7 +45,7 @@
                                 <span style="color:#fff3cd;">hidden</span>
                         </div>
                         @if (Auth::check())
-                            <div class="d-flex flex-row">
+                            <div class="d-flex flex-row" style="margin:7px 0;">
                                 <div>
                                     @if (Auth::user()->is_favoriting($review->id))
                                         {{-- 非お気に入りボタン --}}
@@ -63,7 +63,7 @@
                                 @if (Auth::id() == $review->user_id)
                                     <div>
                                         {{-- レビュー削除ボタン --}}
-                                        <form action="/reviews/show/delete/{{$review->id}}" method="POST">
+                                        <form action="/reviews/delete/{{$review->id}}" method="POST">
                                             {{ csrf_field() }}
                                             <input type="submit" value="削除" class="btn rounded-pill btn-outline-danger btn-sm review-show-delete">
                                         </form>

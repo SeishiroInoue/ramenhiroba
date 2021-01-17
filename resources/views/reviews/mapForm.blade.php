@@ -11,7 +11,7 @@
   緯度 <input type="text" id="lat" name="latitude" value="">
   経度 <input type="text" id="lng" name="longitude" value="">
 </span>
-<p>地図上をクリックするとマーカーを移動できます</p>
+<p>地図上をクリックするとマーカーを移動できます。</p>
 
 <script type="text/javascript" src="//maps.google.com/maps/api/js?key=AIzaSyBTWq7JSg8HKhDShFyGLDo8FN9XbIoS1-Y"></script>
 <script src="{{ asset('/js/mapForm.js') }}"></script>

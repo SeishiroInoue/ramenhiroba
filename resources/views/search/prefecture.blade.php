@@ -2,10 +2,10 @@
 
 @section('content')
     @if ($reviews->count())
-        <p><span class="badge badge-info">{{ $keyword }}</span> のレビュー　{{$reviews->count() }}件</p>
+        <p><span class="badge badge-info">{{ $keyword }}</span> のレビュー　{{ $counts }}件</p>
         <hr>
-        @include('reviews.reviews')
     @else
         <p>見つかりませんでした。</p>
-    @endif    
+    @endif
+    @include('reviews.reviews')
 @endsection

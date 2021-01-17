@@ -70,11 +70,12 @@
                                 @if (Auth::id() == $same_review->user_id)
                                     <div style="position:relative;z-index:2">
                                         {{-- レビュー削除ボタン --}}
-                                        {!! Form::open(['route' => ['reviews.destroy', $same_review->id], 'method' => 'delete']) !!}
-                                            {!! Form::submit('削除', ['class' => 'btn rounded-pill btn-outline-danger btn-sm']) !!}
-                                        {!! Form::close() !!}
+                                        <form action="/reviews/delete/{{$same_review->id}}" method="POST">
+                                            {{ csrf_field() }}
+                                            <input type="submit" value="削除" class="btn rounded-pill btn-outline-danger btn-sm same-review-delete">
+                                        </form>
                                     </div>
-                                @endif   
+                                @endif      
                             </div>
                         @endif
                     </div>
@@ -98,6 +99,14 @@
     truncate: 0,
     showText: 'レビューを読む',
     hideText: ' 戻す'
+  });
+  
+  $(".same-review-delete").click(function(){
+      if(confirm("本当に削除しますか？")){
+    　
+      }else{
+      return false;
+      }
   });
 
 </script>

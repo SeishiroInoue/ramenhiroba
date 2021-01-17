@@ -26,12 +26,12 @@ class SearchController extends Controller
         }
         
         $reviews = $query->withCount('favorite_users')->withCount('comment_users')->orderBy('favorite_users_count', 'desc')->orderBy('comment_users_count', 'desc')->paginate(10);
-        $counts = $query->count();
+        $count = $reviews->total();
         
         return view('search.word', [
             'keyword' => $keyword,
             'reviews' => $reviews,    
-            'counts' => $counts,
+            'count' => $count,
         ]);
     }
     
@@ -47,12 +47,12 @@ class SearchController extends Controller
         }
         
         $reviews = $query->withCount('favorite_users')->withCount('comment_users')->orderBy('favorite_users_count', 'desc')->orderBy('comment_users_count', 'desc')->paginate(10);
-        $counts = $query->count();
+        $count = $reviews->total();
         
         return view('search.tag', [
             'keyword' => $keyword,
             'reviews' => $reviews,    
-            'counts' => $counts,
+            'count' => $count,
         ]);
     }
     
@@ -66,12 +66,12 @@ class SearchController extends Controller
         }
         
         $reviews = $query->withCount('favorite_users')->withCount('comment_users')->orderBy('favorite_users_count', 'desc')->orderBy('comment_users_count', 'desc')->paginate(10);
-        $counts = $query->count();
+        $count = $reviews->total();
         
         return view('search.score', [
             'keyword' => $keyword,
             'reviews' => $reviews,    
-            'counts' => $counts,
+            'count' => $count,
         ]);
     }
     
@@ -85,12 +85,12 @@ class SearchController extends Controller
         }
         
         $reviews = $query->withCount('favorite_users')->withCount('comment_users')->orderBy('favorite_users_count', 'desc')->orderBy('comment_users_count', 'desc')->paginate(10);
-        $counts = $query->count();
-
+        $count = $reviews->total();
+        
         return view('search.prefecture', [
             'keyword' => $keyword,
             'reviews' => $reviews,
-            'counts' => $counts,
+            'count' => $count,
         ]);
     }
 }

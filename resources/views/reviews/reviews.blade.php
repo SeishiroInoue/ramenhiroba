@@ -87,7 +87,7 @@
         </ul>
     </div>
     {{-- ページネーションのリンク --}}
-    <div class="col-12 pt-3 ml-2 pagination justify-content-center">{{ $reviews->links() }}</div>
+    <div class="col-12 pt-3 ml-2 pagination justify-content-center">{{ $reviews->appends(request()->query())->links() }}</div>
 @endif
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>

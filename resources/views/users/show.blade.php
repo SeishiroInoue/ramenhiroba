@@ -1,8 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('users.card')
-    <h3 class="cardtitle text-center"><b>{{ $user->name }}</b></h3>
+    <div class="text-center">
+        <img class="profile-image rounded" src="{{ $user->icon }}" alt="{{ $user->name }}">
+        <h3 class="cardtitle"><b>{{ $user->name }}</b></h3>
+    </div>
     {{-- フォロー／アンフォローボタン --}}
     @include('user_follow.follow_button')
     <div class="text-center">

@@ -3,7 +3,7 @@
         @foreach ($users as $user)
             <li class="media users mb-3 col-md-6 mx-auto" href="{{ route('users.show', $user->id) }}">
                 {{-- ユーザのアイコンを表示 --}}
-                <img class="mr-2 rounded" src="{{ $user->icon }}" width="50" height="50">
+                <img class="mr-2 rounded" src="{{ $user->icon }}" style="width:50px;height:50px;object-fit: coover;">
                 <div class="media-body">
                     <div><b>{{ $user->name }}</b></div>
                     <div>

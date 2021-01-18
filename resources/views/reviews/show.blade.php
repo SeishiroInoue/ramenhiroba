@@ -63,12 +63,12 @@
                                 @if (Auth::id() == $review->user_id)
                                     <div>
                                         {{-- レビュー削除ボタン --}}
-                                        <form action="/reviews/delete/{{$review->id}}" method="POST">
+                                        <form action="/reviews/show/delete/{{$review->id}}" method="POST">
                                             {{ csrf_field() }}
                                             <input type="submit" value="削除" class="btn rounded-pill btn-outline-danger btn-sm review-show-delete">
                                         </form>
                                     </div>
-                                @endif   
+                                @endif
                             </div>
                         @endif
                     </div>
@@ -79,7 +79,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6 offset-md-3">
+        <div class="col-md-6 offset-md-3" id="comment">
             {!! Form::open(['route' => 'comments.store', 'enctype' => 'multipart/form-data', 'action' => 'CommentsController.php']) !!}
             <div class="form-group">
                 {!! Form::hidden('review_id',$review->id) !!}
@@ -102,6 +102,7 @@
         
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="/js/jquery.collapser.js"></script>
+
 <script>
 
   $('.content-show').collapser({
@@ -118,7 +119,19 @@
       return false;
       }
   });
-
-</script>        
-        
+  
+  $(function(){
+    url = window.location.toString();
+	anc = url.substring(url.search('#') + 1);
+	
+    if(anc){
+        var Hash = $("#"+anc);
+        var HashOffset = $(Hash).offset().top;
+        jQuery("html,body").animate({
+            scrollTop: HashOffset
+        }, 500);
+    }
+});
+    
+</script>
 @endsection

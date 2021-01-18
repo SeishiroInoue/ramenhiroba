@@ -61,10 +61,8 @@
                                 </div>
                                 <div class="text-muted" style="margin:3px 0 0 5px;">{{ $same_review->favorite_users_count }}</div>
                                 <div style="margin:0 5px 0 5px;position:relative;z-index:2">
-                                        {{-- コメントボタン --}}
-                                        {!! Form::open(['route' => ['reviews.show', $same_review->id], 'method' => 'get']) !!}
-                                            {!! Form::submit('コメント', ['class' => 'btn rounded-pill btn-outline-primary btn-sm']) !!}
-                                        {!! Form::close() !!}
+                                    {{-- コメントボタン --}}
+                                    <a class="btn rounded-pill btn-outline-primary btn-sm" href='/reviews/{{ $same_review->id }}/#comment'>コメント</a>
                                 </div>
                                 <div class="text-muted" style="margin:3px 5px 0 0">{{ $same_review->comment_users_count }}</div>
                                 @if (Auth::id() == $same_review->user_id)
@@ -75,7 +73,7 @@
                                             <input type="submit" value="削除" class="btn rounded-pill btn-outline-danger btn-sm same-review-delete">
                                         </form>
                                     </div>
-                                @endif      
+                                @endif
                             </div>
                         @endif
                     </div>

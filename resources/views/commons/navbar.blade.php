@@ -22,7 +22,7 @@
                     <li class="nav-item">{!! link_to_route('ranking.favorites', 'ランキング', [], ['class' => 'nav-link']) !!}</li>
                     {{-- ユーザ一覧ページへのリンク --}}
                     <li class="nav-item">{!! link_to_route('users.index', 'ユーザー', [], ['class' => 'nav-link']) !!}</li>
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" style="color:black"><span style="font-size:15px; margin:auto"><b>{{ Auth::user()->name }} </b></span><img class="rounded" src="{{ Auth::user()->icon }}" width="25" height="25"></a>
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" style="color:black"><span style="margin:auto"><b>{{ Auth::user()->name }} </b></span><img class="rounded" src="{{ Auth::user()->icon }}" style="width:25px;height:25px;object-fit:coover;"></a>
                         <ul class="dropdown-menu dropdown-menu-right">
                             {{-- ユーザ詳細ページへのリンク --}}
                             <li class="dropdown-item">{!! link_to_route('users.show', 'マイページ', ['user' => Auth::id()], ['class' => 'text-muted']) !!}</li>

@@ -4,7 +4,7 @@
             @foreach ($reviews as $review)
                 <li class="media reviews col-md-6 content-justify-center" style="position:relative;z-index:1">
                     {{-- ユーザのアイコンを表示 --}}
-                    <a href="{{ route('users.show', $review->user->id) }}"><img class="mr-2 rounded" src="{{ $review->user->icon }}" width="50" height="50" alt="{{ $review->user->name }}" style="position:relative;z-index:2"></a>
+                    <a href="{{ route('users.show', $review->user->id) }}"><img class="mr-2 rounded" src="{{ $review->user->icon }}" alt="{{ $review->user->name }}" style="position:relative;z-index:2;width:50px;height:50px;object-fit:coover;"></a>
                     <div class="media-body">
                         <div>
                             {{-- レビューの所有者のユーザ詳細ページへのリンク --}}
@@ -61,10 +61,8 @@
                                 </div>
                                 <div class="text-muted" style="margin:3px 0 0 5px;">{{ $review->favorite_users_count }}</div>
                                 <div style="margin:0 5px 0 5px;position:relative;z-index:2">
-                                        {{-- コメントボタン --}}
-                                        {!! Form::open(['route' => ['reviews.show', $review->id], 'method' => 'get']) !!}
-                                            {!! Form::submit('コメント', ['class' => 'btn rounded-pill btn-outline-primary btn-sm']) !!}
-                                        {!! Form::close() !!}
+                                    {{-- コメントボタン --}}
+                                    <a class="btn rounded-pill btn-outline-primary btn-sm" href='/reviews/{{ $review->id }}/#comment'>コメント</a>
                                 </div>
                                 <div class="text-muted" style="margin:3px 5px 0 0">{{ $review->comment_users_count }}</div>
                                 @if (Auth::id() == $review->user_id)
@@ -75,7 +73,7 @@
                                             <input type="submit" value="削除" class="btn rounded-pill btn-outline-danger btn-sm review-delete">
                                         </form>
                                     </div>
-                                @endif   
+                                @endif
                             </div>
                         @endif
                     </div>

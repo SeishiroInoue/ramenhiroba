@@ -198,3 +198,15 @@ body {
     box-shadow: 0 1px 0 rgba(136,136,136,1);
     transform: translate3d(0, 1px, 0);
 }
+
+#comment {
+    margin-top:-70px;
+    padding-top:70px;
+}
+
+.profile-image {
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.3);
+    object-fit: coover;
+    width: 112px;
+    height: 112px;
+}

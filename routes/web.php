@@ -71,6 +71,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('ranking/reviews', 'RankingsController@reviews')->name('ranking.reviews');
     
     Route::resource('comments', 'CommentsController', ['only' => ['store', 'destroy']]);
+    Route::post('comments/delete/{id}', 'CommentsController@destroy')->name('comments.destroy');
     
     Route::get('create', function() {
         return view('reviews.form');

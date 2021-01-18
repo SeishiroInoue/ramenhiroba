@@ -46,4 +46,4 @@
             <p class="mt-2">{!! link_to_route('password.edit', 'パスワード変更はこちら') !!}</p>
         </div>
     </div>    
-@endsection('content')    
+@endsection

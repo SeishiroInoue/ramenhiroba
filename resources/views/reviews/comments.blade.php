@@ -27,9 +27,10 @@
                         @if (Auth::id() == $comment->user_id)
                             <div>
                                 {{-- コメント削除ボタン --}}
-                                {!! Form::open(['route' => ['comments.destroy', $comment->id], 'method' => 'delete']) !!}
-                                    {!! Form::submit('削除', ['class' => 'btn rounded-pill btn-outline-danger btn-sm']) !!}
-                                {!! Form::close() !!}
+                                <form action="/comments/delete/{{$comment->id}}" method="POST">
+                                    {{ csrf_field() }}
+                                    <input type="submit" value="削除" class="btn rounded-pill btn-outline-danger btn-sm comment-delete">
+                                </form>
                             </div>
                         @endif
                     </div>
@@ -43,3 +44,15 @@
 @else
     <p style="text-align:center">コメントはまだありません。</p>
 @endif
+
+<script>
+
+  $(".comment-delete").click(function(){
+      if(confirm("本当に削除しますか？")){
+      
+      }else{
+      return false;
+      }
+  });
+
+</script>

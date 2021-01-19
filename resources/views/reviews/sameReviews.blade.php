@@ -69,7 +69,7 @@
                                     <div style="position:relative;z-index:2">
                                         {{-- レビュー削除ボタン --}}
                                         <form action="/reviews/delete/{{$same_review->id}}" method="POST">
-                                            {{ csrf_field() }}
+                                            @csrf
                                             <input type="submit" value="削除" class="btn rounded-pill btn-outline-danger btn-sm same-review-delete">
                                         </form>
                                     </div>

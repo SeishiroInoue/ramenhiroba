@@ -5,7 +5,7 @@
             @if ($comment->user)
                 <li class="media comments mb-3 col-md-6" style="margin:0 auto">
                     {{-- ユーザのアイコンを表示 --}}
-                    <img class="mr-2 rounded" src="{{ $comment->user->icon }}" width="50" height="50" alt="{{ $comment->user->name }}">
+                    <a href="{{ route('users.show', $comment->user->id) }}"><img class="mr-2 rounded" src="{{ $comment->user->icon }}" alt="{{ $comment->user->name }}" style="width:50px;height:50px;object-fit:coover;"></a>
                     <div class="media-body">
                         <div>
                             {{-- レビューの所有者のユーザ詳細ページへのリンク --}}

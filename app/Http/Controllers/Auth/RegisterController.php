@@ -55,7 +55,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'profile' => ['string', 'max:150'],
-            'icon' => ['image', 'max:5120'],
+            'icon' => ['required', 'image', 'max:5120'],
         ]);
     }
 
@@ -67,13 +67,9 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {   
-        if ($data['icon']) {
-            $file = $data['icon'];
-            $path = Storage::disk('s3')->putFile('/icon', $file, 'public');
-            $url = Storage::disk('s3')->url($path);
-        } else {
-            $url = 'https://ramenhiroba.s3-ap-northeast-1.amazonaws.com/ramen-icon.png';
-        }
+        $file = $data['icon'];
+        $path = Storage::disk('s3')->putFile('/icon', $file, 'public');
+        $url = Storage::disk('s3')->url($path);
         
         return User::create([
             'name' => $data['name'],

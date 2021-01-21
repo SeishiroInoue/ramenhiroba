@@ -18,6 +18,8 @@ class UserRegisterTest extends TestCase
      */
     public function testCreateUser()
     {
+        $this->withoutExceptionHandling();
+        
         $user = new User;
         $user->name = 'テストユーザー';
         $user->email = 'test@test.jp';
@@ -26,6 +28,7 @@ class UserRegisterTest extends TestCase
         $user->password = Hash::make('test1234');
         $user->save();
         
+        // ユーザーがDBに登録されているかテスト
         $this->assertDatabaseHas('users', [
             'name' => $user->name,
             'email' => $user->email,
@@ -34,7 +37,9 @@ class UserRegisterTest extends TestCase
         ]);
         
         $readUser = User::where('name', 'テストユーザー')->first();
-        $this->assertNotNull($readUser); 
+        $this->assertNotNull($readUser);
+        
+        // DBに登録されているパスワードと、テスト送信したパスワードを比較
         $this->assertTrue(Hash::check('test1234', $readUser->password));
     }
 }

@@ -63,7 +63,7 @@ class ReviewsController extends Controller
     public function destroy($id)
     {
         $review = Review::findOrFail($id);
-
+        
         if (\Auth::id() === $review->user_id) {
             $review->comments()->delete();
             $review->tags()->delete();

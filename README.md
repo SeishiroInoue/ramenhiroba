@@ -65,6 +65,7 @@
              <li>Laravel 6.20.7</li>
              <li>PHPUnit 6.5.5</li>
              <li>Google Maps Platform API(Maps JavaScript API)</li>
+             <li>CircleCI</li>
          </ul>
     </ul>
     <ul>

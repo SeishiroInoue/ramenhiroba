@@ -107,4 +107,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('create', function() {
         return view('reviews.form');
     })->name('reviews.form');
-});
+    
+    // トピック一覧表示、作成、削除
+    Route::resource('topics', 'TopicController', ['only' => 'index', 'store', 'destroy']);
+}); 

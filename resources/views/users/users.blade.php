@@ -12,7 +12,6 @@
                         @endif
                     </div>    
                     <span class="badge badge-primary">{{ $user->reviews_count }}件</span> <span class="text-muted"><b>レビュー</b></span>
-                    
                 </div>
             </li>
         @endforeach

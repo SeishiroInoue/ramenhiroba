@@ -64,7 +64,10 @@ class ReviewsController extends Controller
     {
         $review = Review::findOrFail($id);
         
-        if (\Auth::id() === $review->user_id) {
+        if ($review->id == 8 || $review->id == 12 || $review->id == 16) {
+            session()->flash('flashmessage','このレビューは削除できません。');
+        }
+        if (\Auth::id() === $review->user_id && $review->id != 8 && $review->id != 12 && $review->id != 16) {
             $review->comments()->delete();
             $review->tags()->delete();
             $review->delete();
@@ -76,13 +79,16 @@ class ReviewsController extends Controller
     public function destroyAtShow($id)
     {
         $review = Review::findOrFail($id);
-
-        if (\Auth::id() === $review->user_id) {
+        
+        if ($review->id == 8 || $review->id == 12 || $review->id == 16) {
+            session()->flash('flashmessage','このレビューは削除できません。');
+        }
+        if (\Auth::id() === $review->user_id && $review->id != 8 && $review->id != 12 && $review->id != 16) {
             $review->comments()->delete();
             $review->tags()->delete();
             $review->delete();
         }
-
+        
         return redirect('/');
     }
     

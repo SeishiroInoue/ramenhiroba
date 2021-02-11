@@ -109,5 +109,5 @@ Route::group(['middleware' => ['auth']], function () {
     })->name('reviews.form');
     
     // トピック一覧表示、作成、削除
-    Route::resource('topics', 'TopicController', ['only' => 'index', 'store', 'destroy']);
+    Route::resource('topics', 'TopicsController', ['only' => 'index', 'store', 'destroy']);
 }); 

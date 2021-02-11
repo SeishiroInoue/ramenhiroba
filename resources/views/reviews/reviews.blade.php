@@ -86,6 +86,26 @@
     </div>
     {{-- ページネーションのリンク --}}
     <div class="col-12 pt-3 ml-2 pagination justify-content-center">{{ $reviews->appends(request()->query())->links() }}</div>
+    @if(Session::has('flashmessage'))
+        <!-- モーダルウィンドウの中身 -->
+        <div class="modal fade" id="myModal" tabindex="-1"
+             role="dialog" aria-labelledby="label1" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center">
+                        {{ session('flashmessage') }}
+                    </div>
+                    <div class="modal-footer text-center">
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
 @endif
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -106,4 +126,8 @@
       return false;
       }
   });
+  
+  $(window).on('load',function(){
+        $('#myModal').modal('show');
+    });
 </script>

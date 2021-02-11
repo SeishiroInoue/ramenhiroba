@@ -210,3 +210,11 @@ body {
     width: 112px;
     height: 112px;
 }
+
+.modal-header {
+    background-color: #ffc107;
+}
+
+.modal-body {
+    font-weight: bold;
+}

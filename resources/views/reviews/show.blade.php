@@ -151,7 +151,11 @@
             scrollTop: HashOffset
         }, 500);
     }
-});
+  });
+
+  $(window).on('load',function(){
+            $('#myModal').modal('show');
+        });
     
 </script>
 @endsection

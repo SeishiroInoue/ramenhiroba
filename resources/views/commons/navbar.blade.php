@@ -25,16 +25,16 @@
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" style="color:black"><span style="margin:auto"><b>{{ Auth::user()->name }} </b></span><img class="rounded" src="{{ Auth::user()->icon }}" style="width:25px;height:25px;object-fit:coover;"></a>
                         <ul class="dropdown-menu dropdown-menu-right">
                             {{-- ユーザ詳細ページへのリンク --}}
-                            <li class="dropdown-item">{!! link_to_route('users.show', 'マイページ', ['user' => Auth::id()], ['class' => 'text-muted']) !!}</li>
+                            <li class="dropdown-item">{!! link_to_route('users.show', 'マイページ', ['user' => Auth::id()], ['class' => 'text-muted list-item']) !!}</li>
                             {{-- お気に入りへのリンク --}}
-                            <li class="dropdown-item">{!! link_to_route('users.favorites', 'お気に入り', ['id' => Auth::id()], ['class' => 'text-muted']) !!}</li>
+                            <li class="dropdown-item">{!! link_to_route('users.favorites', 'お気に入り', ['id' => Auth::id()], ['class' => 'text-muted list-item']) !!}</li>
                             {{-- ユーザー情報編集ページへのリンク --}}
-                            <li class="dropdown-item">{!! link_to_route('profile.edit', '登録情報変更', [], ['class' => 'text-muted']) !!}</li>
+                            <li class="dropdown-item">{!! link_to_route('profile.edit', '登録情報変更', [], ['class' => 'text-muted list-item']) !!}</li>
                             {{-- 退会ページへのリンク --}}
-                            <li class="dropdown-item">{!! link_to_route('user.delete_confirm', '退会する', [], ['class' => 'text-muted']) !!}</li>
+                            <li class="dropdown-item">{!! link_to_route('user.delete_confirm', '退会する', [], ['class' => 'text-muted list-item']) !!}</li>
                             <li class="dropdown-divider"></li>
                             {{-- ログアウトへのリンク --}}
-                            <li class="dropdown-item">{!! link_to_route('logout.get', 'ログアウト', [], ['class' => 'text-muted']) !!}</li>
+                            <li class="dropdown-item">{!! link_to_route('logout.get', 'ログアウト', [], ['class' => 'text-muted list-item']) !!}</li>
                         </ul>
                     {{-- フォームページへのリンク --}}
                     <li>{!! link_to_route('reviews.form', 'レビューする', [], ['class' => 'btn rounded-pill btn-danger my-sm-1']) !!}</li>

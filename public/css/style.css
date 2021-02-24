@@ -218,3 +218,11 @@ body {
 .modal-body {
     font-weight: bold;
 }
+
+a, a:visited, a:focus, a:hover {
+    text-decoration: none;
+}
+
+.list-item {
+    display: block;
+}

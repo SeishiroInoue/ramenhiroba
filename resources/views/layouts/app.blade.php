@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <title>ラーメン広場</title>
+        <meta name="description" content="ラーメンを共有しよう ラーメン広場は食べたラーメンの写真と感想を共有できるサイトです">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="shortcut icon" href="https://ramenhiroba.s3-ap-northeast-1.amazonaws.com/favicon.ico" type="image/x-icon">
         <link rel="icon" href="https://ramenhiroba.s3-ap-northeast-1.amazonaws.com/favicon.ico" type="image/x-icon">

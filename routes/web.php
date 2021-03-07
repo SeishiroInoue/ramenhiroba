@@ -11,6 +11,9 @@
 |
 */
 
+// 認証機能
+Auth::routes();
+
 // トップページ
 Route::get('/', 'ReviewsController@index')->name('welcome');
 

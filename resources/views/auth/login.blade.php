@@ -32,6 +32,10 @@
                         {!! Form::submit('ゲストログイン ', ['class' => 'btn btn-danger btn-block']) !!}
                 {!! Form::close() !!}
             </div>
+            
+            @if (Route::has('password.request'))
+                <a href="{{ route('password.request') }}">パスワードをお忘れですか？</a>
+            @endif
                 
             {{-- ユーザ登録ページへのリンク --}}
             <p class="mt-2">{!! link_to_route('signup.get', '新規登録はこちら') !!}</p>

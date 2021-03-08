@@ -22,9 +22,11 @@
                 {!! Form::submit('ログイン', ['class' => 'btn btn-danger btn-block']) !!}
             {!! Form::close() !!}
             
-            <br>
+            @if (Route::has('password.request'))
+                <div class="mt-2 mb-3"><a href="{{ route('password.request') }}">パスワードをお忘れですか？</a></div>
+            @endif
             <div class="guest">
-                <spna>ゲストユーザーはこちら</span>    
+                <label>ゲストユーザーはこちら</label>    
                 {{-- ゲストログインボタン --}}
                 {!! Form::open(['route' => 'login.guest']) !!}
                         {!! Form::hidden('email', 'guest@guest.jp') !!}
@@ -32,10 +34,6 @@
                         {!! Form::submit('ゲストログイン ', ['class' => 'btn btn-danger btn-block']) !!}
                 {!! Form::close() !!}
             </div>
-            
-            @if (Route::has('password.request'))
-                <a href="{{ route('password.request') }}">パスワードをお忘れですか？</a>
-            @endif
                 
             {{-- ユーザ登録ページへのリンク --}}
             <p class="mt-2">{!! link_to_route('signup.get', '新規登録はこちら') !!}</p>

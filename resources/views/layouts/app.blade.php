@@ -14,12 +14,12 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/js/lightbox.min.js" type="text/javascript"></script>
     </head>
     <body>
-        <div class="wrapper bg-light" style="display:flex;flex-direction:column;min-height:100vh;">
+        <div class="wrapper bg-light">
 
             {{-- ナビゲーションバー --}}
             @include('commons.navbar')
     
-            <div class="container" style="flex:1">
+            <div class="container">
                 {{-- エラーメッセージ --}}
                 @include('commons.error_messages')
     

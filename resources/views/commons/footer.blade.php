@@ -1,4 +1,4 @@
-<footer style="margin-top:auto;text-align:center">
+<footer>
     <div>
         <a class="text-muted" href="{{ route('about') }}">About |</a>
         <a class="text-muted" href="{{ route('privacy') }}"> プライバシーポリシー |</a>

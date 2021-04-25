@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Session;
 use App\Comment;
 
 class CommentsController extends Controller
@@ -30,7 +31,9 @@ class CommentsController extends Controller
                 'review_id' => $request->review_id,
             ]);
         }
-
+        
+        Session::flash('flash_message', 'コメントを投稿しました！');
+    
         return back();
     }
     
@@ -41,6 +44,8 @@ class CommentsController extends Controller
         if (\Auth::id() === $comment->user_id) {
             $comment->delete();
         }
+        
+        Session::flash('flash_message', 'コメントを削除しました！');
 
         return back();
     }

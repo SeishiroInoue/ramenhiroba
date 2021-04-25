@@ -58,7 +58,7 @@ class ReviewsController extends Controller
         
         $review->tags()->attach($tags_id);
         
-        Session::flash('flash_message', 'レビューを追加しました！');
+        Session::flash('flash_message', 'レビューを投稿しました！');
         
         $reviews = Review::withCount('favorite_users')->withCount('comment_users')->orderBy('created_at','desc')->paginate(10);
         
@@ -77,7 +77,9 @@ class ReviewsController extends Controller
             $review->tags()->delete();
             $review->delete();
         }
-
+        
+        Session::flash('flash_message', 'レビューを削除しました！');
+        
         return back();
     }
     
@@ -93,6 +95,8 @@ class ReviewsController extends Controller
             $review->tags()->delete();
             $review->delete();
         }
+        
+        Session::flash('flash_message', 'レビューを削除しました！');
         
         return redirect('/');
     }

@@ -12,6 +12,7 @@
         <br>    
         <h1><b>運営情報</b></h1><br>
             <div style="line-height:100%">
+                <p>運営者：<a href="https://twitter.com/inouelog" target="_blank">@inouelog</a></p>
                 <p>お問い合わせ：<a href="https://twitter.com/ramenhiroba" target="_blank">@ramenhiroba</a></p>
                 <p>（ダイレクトメッセージでお問い合わせください。）</p>
             </div>    

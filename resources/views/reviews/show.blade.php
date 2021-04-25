@@ -120,7 +120,7 @@
             @include('reviews.sameReviews')  
         @endif
         
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="/js/jquery.collapser.js"></script>
 
 <script>

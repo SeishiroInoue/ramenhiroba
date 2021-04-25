@@ -88,7 +88,7 @@
     <div class="col-12 pt-3 ml-2 pagination justify-content-center">{{ $same_reviews->links() }}</div>
 @endif
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="/js/jquery.collapser.js"></script>
 <script>
 

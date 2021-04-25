@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Session;
 use App\Review;
 use App\Comment;
 use App\User;
@@ -56,8 +57,12 @@ class ReviewsController extends Controller
         $review->save();
         
         $review->tags()->attach($tags_id);
-
-        return redirect('/');
+        
+        Session::flash('flash_message', 'レビューを追加しました！');
+        
+        $reviews = Review::withCount('favorite_users')->withCount('comment_users')->orderBy('created_at','desc')->paginate(10);
+        
+        return redirect()->route('welcome')->with(compact('reviews'));
     }
     
     public function destroy($id)

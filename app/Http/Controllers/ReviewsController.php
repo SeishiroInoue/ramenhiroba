@@ -60,9 +60,7 @@ class ReviewsController extends Controller
         
         Session::flash('flash_message', 'レビューを投稿しました！');
         
-        $reviews = Review::withCount('favorite_users')->withCount('comment_users')->orderBy('created_at','desc')->paginate(10);
-        
-        return redirect()->route('welcome')->with(compact('reviews'));
+        return redirect('/');
     }
     
     public function destroy($id)

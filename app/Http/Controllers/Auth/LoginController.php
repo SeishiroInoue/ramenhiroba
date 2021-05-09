@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\User;
+use Session;
 
 class LoginController extends Controller
 {
@@ -29,7 +30,10 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    //protected $redirectTo = RouteServiceProvider::HOME;
+    protected function redirectTo() {
+      Session::flash('flash_message', 'ログインしました！');
+    }
 
     /**
      * Create a new controller instance.
@@ -46,9 +50,21 @@ class LoginController extends Controller
     public function guestLogin(Request $request)
     {
         if (Auth::loginUsingId(self::GUEST_USER_ID)) {
+            Session::flash('flash_message', 'ゲストログインしました！');
             return redirect('/');
         }
-
+        
         return redirect('/');
+    }
+    
+    public function logout(Request $request)
+    {
+        $this->guard()->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+    
+        Session::flash('flash_message', 'ログアウトしました！');
+    
+        return $this->loggedOut($request) ?: redirect('/');
     }
 }

@@ -9,6 +9,9 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
+use Session;
 
 class RegisterController extends Controller
 {
@@ -78,5 +81,19 @@ class RegisterController extends Controller
             'icon' => $url,
             'profile' => $data['profile'],
         ]);
+    }
+    
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+    
+        event(new Registered($user = $this->create($request->all())));
+    
+        $this->guard()->login($user);
+    
+        Session::flash('flash_message', '新規登録しました！');
+    
+        return $this->registered($request, $user)
+                        ?: redirect($this->redirectPath());
     }
 }

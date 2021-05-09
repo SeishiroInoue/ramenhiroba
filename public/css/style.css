@@ -38,9 +38,10 @@ footer {
     float: left;
 }
 
+
 .media.reviews,
 .media.users {
-    transform:scale(0.95);
+    transform:scale(0.97);
 }
 
 .media.reviews li :not(.content) {

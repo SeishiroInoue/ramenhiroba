@@ -9,17 +9,17 @@
         <div class="col-sm-8 offset-sm-2">
         {!! Form::open(['route' => 'reviews.store', 'enctype' => 'multipart/form-data', 'action' => 'ReviewsController.php']) !!}
             <div class="form-group">
-                {!! Form::label('contet', 'レビュー') !!}
+                {!! Form::label('contet', 'レビュー') !!}<span class="alert-danger">※必須</span>
                 {!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows' => '7']) !!}
             </div>
             
             <div class="form-group">
-                {!! Form::label('tags', 'タグ') !!} {!! Form::label('tags', '※任意',  ['class' => 'text-muted']) !!}
+                {!! Form::label('tags', 'タグ') !!}{!! Form::label('tags', '※任意',  ['class' => 'text-muted']) !!}
                 {!! Form::text('tags', old('tags'), ['class' => 'form-control', 'placeholder' => '#家系#二郎系']) !!}
             </div>  
             
             <div class="form-group">
-                {!! Form::label('photo', '写真') !!}
+                {!! Form::label('photo', '写真') !!}<span class="alert-danger">※必須</span>
                 {!! Form::file('photo', ['class' => 'form-control-file']) !!}
             </div>
             @include('reviews.prefectureForm')

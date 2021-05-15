@@ -44,4 +44,19 @@
             {!! Form::close() !!}
         </div>
     </div>
+    
+    <script>
+        $(function () {
+            $('.form-control').on('blur', function () {
+                let error;
+                let value = $(this).val();
+                if (value == "" || !value.match(/[^\s\t]/)) {
+                    error = true;
+                }
+            if (error) {
+              alert('入力は必須です。');
+            }
+            });
+        });
+    </script>
 @endsection

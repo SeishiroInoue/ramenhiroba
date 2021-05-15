@@ -10,7 +10,7 @@
         {!! Form::open(['route' => 'reviews.store', 'enctype' => 'multipart/form-data', 'action' => 'ReviewsController.php']) !!}
             <div class="form-group">
                 {!! Form::label('contet', 'レビュー') !!}<span class="alert-danger">※必須</span>
-                {!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows' => '7']) !!}
+                {!! Form::textarea('content', old('content'), ['class' => 'form-control form-review', 'rows' => '7']) !!}
             </div>
             
             <div class="form-group">
@@ -39,5 +39,18 @@
         {!! Form::close() !!}
         </div>
     </div>
-
+    <script>
+        $(function () {
+            $('.form-review').on('blur', function () {
+                let error;
+                let value = $(this).val();
+                if (value == "" || !value.match(/[^\s\t]/)) {
+                    error = true;
+                }
+            if (error) {
+              alert('入力は必須です。');
+            }
+            });
+        });
+    </script>
 @endsection
